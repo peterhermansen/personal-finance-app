@@ -1,0 +1,11 @@
+{
+  "name": "personal-finance-app",
+  "version": "1.0.0",
+  "description": "A personal finance app to help manage budgets, savings, and expenditures.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peter Hermansen",
+  "license": "ISC"
+}
