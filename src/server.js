@@ -1,6 +1,6 @@
 const dotenv = require("dotenv");
 
-// Specify location of environment variables
+// // Specify location of environment variables
 dotenv.config({ path: "./config.env" });
 
 // app must be required after environment variable to get access to them
