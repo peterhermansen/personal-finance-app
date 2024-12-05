@@ -10,6 +10,6 @@ app.use(helmet());
 app.use(express.json());
 
 // Serve static files
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(`${__dirname}/../public`));
 
 module.exports = app;

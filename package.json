@@ -4,7 +4,7 @@
   "description": "A personal finance app to help manage budgets, savings, and expenditures.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon src/server.js"
   },
   "author": "Peter Hermansen",
   "license": "ISC",
