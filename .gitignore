@@ -1,6 +1,7 @@
 .prettierignore
 config.env
 node_modules
+z_nextjs-README.md
 
 # dependencies
 /node_modules
