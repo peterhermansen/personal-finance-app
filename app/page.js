@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import '../styles/globals.css';
-import Summary from '@/components/overview/Summary';
-import PotsSummary from '@/components/overview/PotsSummary';
+import SummaryOverview from '@/components/overview/SummaryOverview';
+import PotsOverview from '@/components/overview/PotsOverview';
+import TransactionsOverview from '@/components/overview/TransactionsOverview';
 
 export default async function Page() {
   // Read, parse, and assign JSON data to variable
@@ -16,13 +17,17 @@ export default async function Page() {
       <h1 className="title">Overview</h1>
 
       <div className="summaries">
-        <Summary
+        <SummaryOverview
           header="Current Balance"
           value={data.balance.current}
           style="dark"
         />
-        <Summary header="Income" value={data.balance.income} style="light" />
-        <Summary
+        <SummaryOverview
+          header="Income"
+          value={data.balance.income}
+          style="light"
+        />
+        <SummaryOverview
           header="Expenses"
           value={data.balance.expenses}
           style="light"
@@ -31,8 +36,8 @@ export default async function Page() {
 
       <div className="content grid grid--2-cols">
         <div>
-          <PotsSummary pots={data.pots} />
-          <div></div>
+          <PotsOverview pots={data.pots} />
+          <TransactionsOverview />
         </div>
 
         <div></div>

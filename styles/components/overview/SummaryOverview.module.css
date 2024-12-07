@@ -1,0 +1,27 @@
+.summary {
+  height: 7.5rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  flex-grow: 1;
+}
+
+.summary-title {
+  margin-bottom: 0.75rem;
+}
+
+.dark {
+  background-color: #201f24;
+  color: white;
+}
+
+.light {
+  background-color: white;
+}
+
+.light h4 {
+  color: #696868;
+}
+
+.value-light {
+  color: white;
+}
