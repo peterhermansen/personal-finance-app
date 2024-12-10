@@ -18,8 +18,8 @@
   background-color: white;
 }
 
-.light h4 {
-  color: #696868;
+.light span:first-child {
+  color: #888888;
 }
 
 .value-light {

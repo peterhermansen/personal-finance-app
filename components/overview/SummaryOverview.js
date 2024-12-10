@@ -6,14 +6,16 @@ const SummaryOverview = ({ header, value, style }) => {
     <div
       className={`${styles.summary} ${style === 'dark' ? styles.dark : styles.light}`}
     >
-      <h4
-        className={`${styles['summary-title']} ${style === 'dark' ? styles['value-light'] : null}`}
+      <span
+        className={`${styles['summary-title']} ${style === 'dark' ? styles['value-light'] : null} text-4`}
       >
         {header}
-      </h4>
-      <h1 className={`${style === 'dark' ? styles['value-light'] : null}`}>
+      </span>
+      <span
+        className={`${style === 'dark' ? styles['value-light'] : null} text-1`}
+      >
         ${formatVal(value)}
-      </h1>
+      </span>
     </div>
   );
 };

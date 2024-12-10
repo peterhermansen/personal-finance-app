@@ -19,10 +19,10 @@ const TransactionRow = ({ data, i, totalRows, display }) => {
             height="40"
             className={styles.avatar}
           />
-          <span className="text-4-bold">{data.name}</span>
+          <span className="text-4 bold">{data.name}</span>
         </div>
         <div className={styles['transaction-info']}>
-          <span className={`text-4-bold ${plusMinus === '+' ? 'green' : null}`}>
+          <span className={`text-4 bold ${plusMinus === '+' ? 'green' : null}`}>
             {plusMinus}${formatVal(absAmount)}
           </span>
           <span className={`text-5 ${styles.date}`}>

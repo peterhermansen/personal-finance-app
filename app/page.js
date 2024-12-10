@@ -13,7 +13,7 @@ export default async function Page() {
 
   return (
     <div className="container">
-      <h1 className="title">Overview</h1>
+      <h1 className="title text-1">Overview</h1>
 
       <div className="summaries">
         <SummaryOverview

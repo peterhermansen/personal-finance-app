@@ -16,10 +16,10 @@ const PotsOverview = ({ data }) => {
         <div className={`${styles['pot-color']}`} style={potColor}></div>
         <div className={`${styles['pot-text']}`}>
           <div className={`${styles['pot-title']}`}>
-            <h5>{pot.name}</h5>
+            <span className="text-5">{pot.name}</span>
           </div>
           <div className={`${styles['pot-value']}`}>
-            <h5>${pot.total}</h5>
+            <span className="text-5 bold">${pot.total}</span>
           </div>
         </div>
       </div>
@@ -38,8 +38,8 @@ const PotsOverview = ({ data }) => {
             height="40"
           />
           <div className={`${styles['pots-total-txt']}`}>
-            <h4>Total Saved</h4>
-            <h1>${totalSaved}</h1>
+            <h4 className="text-4">Total Saved</h4>
+            <span className="text-1 bold">${totalSaved}</span>
           </div>
         </div>
         <div className={`${styles['pots-detail']}`}>
