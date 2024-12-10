@@ -10,7 +10,6 @@ export default async function Page() {
   const filePath = path.join(process.cwd(), 'data.json');
   const jsonData = fs.readFileSync(filePath);
   const data = JSON.parse(jsonData);
-  console.log(data.pots);
 
   return (
     <div className="container">
@@ -36,8 +35,8 @@ export default async function Page() {
 
       <div className="content grid grid--2-cols">
         <div>
-          <PotsOverview pots={data.pots} />
-          <TransactionsOverview />
+          <PotsOverview data={data.pots} />
+          <TransactionsOverview data={data.transactions} />
         </div>
 
         <div></div>
