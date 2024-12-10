@@ -15,46 +15,6 @@ body {
   padding: 2.5rem;
 }
 
-h1 {
-  font-size: 2rem;
-  line-height: 120%;
-  font-weight: 600;
-}
-
-h2 {
-  font-size: 1.25rem;
-  line-height: 120%;
-  font-weight: 600;
-}
-
-h3 {
-  font-size: 1rem;
-  line-height: 150%;
-  font-weight: 600;
-}
-
-h4 {
-  font-size: 0.875rem;
-  line-height: 150%;
-  letter-spacing: 0px;
-  font-weight: 400;
-}
-
-h5 {
-  font-size: 0.75rem;
-  line-height: 150%;
-  font-weight: 400;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  letter-spacing: 0px;
-  color: #201f24;
-}
-
 button {
   border: none;
   cursor: pointer;
@@ -74,17 +34,39 @@ button {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.text-4-bold {
+.text-1 {
+  font-size: 2rem;
+  line-height: 120%;
+  font-weight: 600;
+}
+
+.text-2 {
+  font-size: 1.25rem;
+  line-height: 120%;
+  font-weight: 600;
+}
+
+.text-3 {
+  font-size: 1rem;
+  line-height: 150%;
+  font-weight: 600;
+}
+
+.text-4 {
   font-size: 0.875rem;
   line-height: 150%;
   letter-spacing: 0px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .text-5 {
   font-size: 0.75rem;
   line-height: 150%;
   font-weight: 400;
+}
+
+.bold {
+  font-weight: 600;
 }
 
 .text-1,
@@ -94,6 +76,7 @@ button {
 .text-5 {
   letter-spacing: 0px;
   color: #201f24;
+  display: block;
 }
 
 .green {
@@ -134,8 +117,8 @@ button {
   align-items: center;
 }
 
-.btn--overview h4 {
-  color: #696868;
+.btn--overview span {
+  color: #888888;
 }
 
 .divider {
