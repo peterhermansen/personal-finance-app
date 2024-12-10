@@ -1,9 +1,10 @@
 import styles from '@/styles/components/overview/PotsOverview.module.css';
 import Image from 'next/image';
+import HeaderOverview from './HeaderOverview';
 
-const PotsOverview = ({ pots }) => {
+const PotsOverview = ({ data }) => {
   // Calculate total of all pots
-  const totalSaved = pots.reduce((acc, val) => acc + val.total, 0);
+  const totalSaved = data.reduce((acc, val) => acc + val.total, 0);
 
   function generatePotEl(pot) {
     const potColor = {
@@ -27,19 +28,7 @@ const PotsOverview = ({ pots }) => {
 
   return (
     <div className={`${styles.pots}`}>
-      <div className="overview-section-header">
-        <h2>Pots</h2>
-        <button className="btn--overview">
-          <h4>See Details</h4>
-          <Image
-            src="/images/icon-caret-right.svg"
-            alt="Right Arrow"
-            width="8"
-            height="8"
-          />
-        </button>
-      </div>
-
+      <HeaderOverview title="Pots" btnText="See Details" />
       <div className={`${styles['pots-summary']}`}>
         <div className={`${styles['pots-total']}`}>
           <Image
@@ -54,7 +43,7 @@ const PotsOverview = ({ pots }) => {
           </div>
         </div>
         <div className={`${styles['pots-detail']}`}>
-          {pots.slice(0, 4).map((pot) => generatePotEl(pot))}
+          {data.slice(0, 4).map((pot) => generatePotEl(pot))}
         </div>
       </div>
     </div>
