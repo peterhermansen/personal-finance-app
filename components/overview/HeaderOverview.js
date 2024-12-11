@@ -3,7 +3,7 @@ import Image from 'next/image';
 const HeaderOverview = ({ title, btnText }) => {
   return (
     <div className="overview-section-header">
-      <h2 className="text-2">{title}</h2>
+      <h2 className="text-2 bold">{title}</h2>
       <button className="btn--overview">
         <span className="text-4">{btnText}</span>
         <Image

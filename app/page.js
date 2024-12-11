@@ -4,6 +4,7 @@ import '../styles/globals.css';
 import SummaryOverview from '@/components/overview/SummaryOverview';
 import PotsOverview from '@/components/overview/PotsOverview';
 import TransactionsOverview from '@/components/overview/TransactionsOverview';
+import BillsOverview from '@/components/overview/BillsOverview';
 
 export default async function Page() {
   // Read, parse, and assign JSON data to variable
@@ -13,7 +14,7 @@ export default async function Page() {
 
   return (
     <div className="container">
-      <h1 className="title text-1">Overview</h1>
+      <h1 className="title text-1 bold">Overview</h1>
 
       <div className="summaries">
         <SummaryOverview
@@ -39,7 +40,9 @@ export default async function Page() {
           <TransactionsOverview data={data.transactions} />
         </div>
 
-        <div></div>
+        <div>
+          <BillsOverview data={data.transactions} />
+        </div>
       </div>
     </div>
   );
