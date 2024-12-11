@@ -12,7 +12,7 @@ const SummaryOverview = ({ header, value, style }) => {
         {header}
       </span>
       <span
-        className={`${style === 'dark' ? styles['value-light'] : null} text-1`}
+        className={`${style === 'dark' ? styles['value-light'] : null} text-1 bold`}
       >
         ${formatVal(value)}
       </span>
