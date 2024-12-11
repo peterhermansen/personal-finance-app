@@ -37,19 +37,19 @@ button {
 .text-1 {
   font-size: 2rem;
   line-height: 120%;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .text-2 {
   font-size: 1.25rem;
   line-height: 120%;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .text-3 {
   font-size: 1rem;
   line-height: 150%;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .text-4 {
@@ -69,6 +69,7 @@ button {
   font-weight: 600;
 }
 
+/* If you put font weight here, .bold will not override it */
 .text-1,
 .text-2,
 .text-3,
@@ -81,6 +82,18 @@ button {
 
 .green {
   color: #277c78;
+}
+
+.green-bg {
+  background-color: #277c78;
+}
+
+.yellow-bg {
+  background-color: #f2cdac;
+}
+
+.cyan-bg {
+  background-color: #82c9d7;
 }
 
 .mrg-btm-sm {

@@ -6,7 +6,6 @@ import formatDate from '@/utils/formatDate';
 const TransactionRow = ({ data, i, totalRows, display }) => {
   const plusMinus = data.amount > 0 ? '+' : '-';
   const absAmount = Math.abs(data.amount);
-  console.log(absAmount);
 
   return (
     <>
