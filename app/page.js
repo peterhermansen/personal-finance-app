@@ -5,6 +5,7 @@ import SummaryOverview from '@/components/overview/SummaryOverview';
 import PotsOverview from '@/components/overview/PotsOverview';
 import TransactionsOverview from '@/components/overview/TransactionsOverview';
 import BillsOverview from '@/components/overview/BillsOverview';
+import BudgetsOverview from '@/components/overview/BudgetsOverview';
 
 export default async function Page() {
   // Read, parse, and assign JSON data to variable
@@ -41,6 +42,10 @@ export default async function Page() {
         </div>
 
         <div>
+          <BudgetsOverview
+            budgets={data.budgets}
+            transactions={data.transactions}
+          />
           <BillsOverview data={data.transactions} />
         </div>
       </div>
