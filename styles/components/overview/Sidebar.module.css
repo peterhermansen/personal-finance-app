@@ -1,0 +1,92 @@
+.sidebar {
+  height: 100vh;
+  background-color: #201f24;
+  position: fixed;
+  border-top-right-radius: 1rem;
+}
+
+.sidebar--open {
+  width: 18.75rem;
+}
+
+.sidebar--closed {
+  width: 5.5rem;
+}
+
+.logo {
+  margin-bottom: 2rem;
+}
+
+.logo--open {
+  padding: 2.5rem 2.5rem;
+}
+
+.logo--closed {
+  padding: 2.5rem 2rem;
+}
+
+.nav {
+  height: calc(100vh - 8.625rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.minimize {
+  margin-bottom: 3.5rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  height: 3.5rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.sidebar--open .nav nav .btn {
+  width: 17.25rem;
+}
+
+.sidebar--closed .nav nav .btn {
+  width: 5rem;
+  padding: 0 0 0 2rem;
+}
+
+.btn--active::before {
+  content: '';
+  background-color: #277c78;
+  width: 5px;
+  height: 3.5rem;
+  position: absolute;
+  left: 0;
+}
+
+.icon,
+.name {
+  color: #b3b3b3;
+  fill: #b3b3b3;
+}
+
+.btn--active {
+  background-color: white;
+}
+
+.btn--active .icon {
+  fill: #277c78;
+}
+
+.btn--active .name {
+  color: #201f24;
+}
+
+.btn--inactive:hover .icon,
+.btn--inactive:hover .name {
+  color: white;
+  fill: white;
+}
+
+.name {
+  font-weight: 500;
+}
