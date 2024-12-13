@@ -7,12 +7,12 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  transition: all 0.3s;
 }
 
 body {
   background-color: #f8f4f0;
   font-family: 'PublicSans', sans-serif;
-  padding: 2.5rem;
 }
 
 button {
@@ -37,32 +37,32 @@ button {
 .text-1 {
   font-size: 2rem;
   line-height: 120%;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .text-2 {
   font-size: 1.25rem;
   line-height: 120%;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .text-3 {
   font-size: 1rem;
   line-height: 150%;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .text-4 {
   font-size: 0.875rem;
   line-height: 150%;
   letter-spacing: 0px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .text-5 {
   font-size: 0.75rem;
   line-height: 150%;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .bold {
@@ -107,10 +107,12 @@ button {
 /******************************/
 /* GENRAL CLASSES */
 /******************************/
-.container {
-  /* 1440px */
-  max-width: 90rem;
-  margin: 0 auto;
+.container--sidebar-open {
+  padding: 2.5rem 2.5rem 2.5rem 21.25rem;
+}
+
+.container--sidebar-closed {
+  padding: 2.5rem 2.5rem 2.5rem 8rem;
 }
 
 .title {
@@ -121,24 +123,14 @@ button {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 2rem;
-}
-
-.overview-section-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.btn--overview {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.btn--overview span {
-  color: #888888;
+  min-width: 65.75rem;
 }
 
 .divider {
   background-color: #f2f2f2;
   height: 1px;
+}
+
+.grid-overview {
+  grid-template-columns: 38rem 1fr;
 }
