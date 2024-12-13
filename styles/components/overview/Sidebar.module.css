@@ -15,6 +15,7 @@
 
 .logo {
   margin-bottom: 2rem;
+  height: 6rem;
 }
 
 .logo--open {
@@ -23,6 +24,27 @@
 
 .logo--closed {
   padding: 2.5rem 2rem;
+}
+
+.logo-large {
+  position: absolute;
+  left: 2.4rem;
+}
+
+.logo-small {
+  position: absolute;
+  left: 2.0625rem;
+  top: 2.5625rem;
+  transition: all 0.8s ease-in-out;
+}
+
+.logo-hidden {
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.logo-visible {
+  transition: all 0.8s ease-in-out;
 }
 
 .nav {
@@ -36,20 +58,27 @@
   margin-bottom: 3.5rem;
 }
 
+.minimize--closed {
+  transform: rotate(180deg);
+}
+
 .btn {
-  display: flex;
+  display: grid;
   align-items: center;
   gap: 1rem;
   padding: 1rem 2rem;
   height: 3.5rem;
   border-radius: 0 0.75rem 0.75rem 0;
+  position: relative;
 }
 
-.sidebar--open .nav nav .btn {
+.sidebar--open .nav nav .btn,
+.sidebar--open .minimize .btn {
   width: 17.25rem;
 }
 
-.sidebar--closed .nav nav .btn {
+.sidebar--closed .nav nav .btn,
+.sidebar--closed .minimize .btn {
   width: 5rem;
   padding: 0 0 0 2rem;
 }
@@ -89,4 +118,25 @@
 
 .name {
   font-weight: 500;
+  justify-self: start;
+  position: absolute;
+  /* width: 100%; */
+  left: 4.5rem;
+  white-space: nowrap;
+}
+
+.name-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    all 0.3s ease-in-out,
+    opacity 0.2s ease-in-out;
+}
+
+.name-visible {
+  opacity: 100;
+  pointer-events: all;
+  transition:
+    all 0.3s ease-in-out,
+    opacity 0.8s ease-in-out;
 }
