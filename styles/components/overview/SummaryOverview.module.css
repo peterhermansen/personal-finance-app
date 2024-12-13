@@ -22,6 +22,7 @@
   color: #888888;
 }
 
-.value-light {
+/* div required to increase selector specificity, otherwise text will be black when switching back to overview tab */
+div .value-light {
   color: white;
 }

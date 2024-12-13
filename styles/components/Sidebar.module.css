@@ -92,8 +92,8 @@
   left: 0;
 }
 
-.icon,
-.name {
+button .icon,
+button .name {
   color: #b3b3b3;
   fill: #b3b3b3;
 }
@@ -116,7 +116,7 @@
   fill: white;
 }
 
-.name {
+button .name {
   font-weight: 500;
   justify-self: start;
   position: absolute;
