@@ -1,0 +1,15 @@
+@media (min-width: 108.75em) {
+  .container--sidebar-open {
+    max-width: 108.75rem;
+    margin: 0 auto;
+    padding: 2.5rem 2.5rem 2.5rem 21.25rem;
+  }
+}
+
+@media (min-width: 95.5em) {
+  .container--sidebar-closed {
+    max-width: 95.5rem;
+    margin: 0 auto;
+    padding: 2.5rem 2.5rem 2.5rem 8rem;
+  }
+}

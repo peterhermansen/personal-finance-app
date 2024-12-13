@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn span {
+  color: #888888;
+}
+
+.btn:hover span {
+  color: #201f24;
+  font-weight: 400;
+}
