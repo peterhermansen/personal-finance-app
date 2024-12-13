@@ -26,7 +26,7 @@ const BudgetsChart = ({ data }) => {
     chartData.datasets[1].backgroundColor.push(`${budget.theme}cc`);
   });
 
-  const options = { borderWidth: 0, cutout: '65%' };
+  const options = { borderWidth: 0, cutout: '65%', animation: false };
   return <Doughnut data={chartData} options={options} />;
 };
 
