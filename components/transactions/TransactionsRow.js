@@ -3,7 +3,8 @@ import Image from 'next/image';
 import formatVal from '@/utils/formatVal';
 import formatDate from '@/utils/formatDate';
 
-const TransactionRow = ({ data, i, totalRows, display }) => {
+// Add display as parameter later to differentiate between overview and transaction page display styles
+const TransactionRow = ({ data, i, totalRows }) => {
   const plusMinus = data.amount > 0 ? '+' : '-';
   const absAmount = Math.abs(data.amount);
 
