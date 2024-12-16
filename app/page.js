@@ -39,7 +39,7 @@ export default function Overview() {
       <div className="content grid grid-overview">
         <div>
           <PotsOverview data={data.pots} />
-          <TransactionsOverview data={data.transactions} />
+          <TransactionsOverview data={data.transactions} display="overview" />
         </div>
 
         <div>
