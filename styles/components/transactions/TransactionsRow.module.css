@@ -2,7 +2,6 @@
   display: flex;
   list-style: none;
   justify-content: space-between;
-  padding-bottom: 1.25rem;
 }
 
 .transaction-name {

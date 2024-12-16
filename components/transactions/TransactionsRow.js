@@ -3,14 +3,19 @@ import Image from 'next/image';
 import formatVal from '@/utils/formatVal';
 import formatDate from '@/utils/formatDate';
 
-// Add display as parameter later to differentiate between overview and transaction page display styles
-const TransactionRow = ({ data, i, totalRows }) => {
+const TransactionsRow = ({ data, i, totalRows, display }) => {
   const plusMinus = data.amount > 0 ? '+' : '-';
   const absAmount = Math.abs(data.amount);
 
   return (
     <>
-      <li className={styles['transaction-row']}>
+      <li
+        className={`
+          ${styles['transaction-row']} 
+          ${display !== 'overview' ? 'grid-transaction-columns' : 'pd-btm-md'} 
+          ${display !== 'overview' && i < totalRows ? 'pd-btm-sm' : null}
+          ${display !== 'overview' && i > 0 ? ' pd-top-sm' : null}`}
+      >
         <div className={styles['transaction-name']}>
           <Image
             src={data.avatar}
@@ -21,18 +26,39 @@ const TransactionRow = ({ data, i, totalRows }) => {
           />
           <span className="text-4 bold">{data.name}</span>
         </div>
-        <div className={styles['transaction-info']}>
-          <span className={`text-4 bold ${plusMinus === '+' ? 'green' : null}`}>
-            {plusMinus}${formatVal(absAmount)}
-          </span>
-          <span className={`text-5 ${styles.date}`}>
-            {formatDate(data.date)}
-          </span>
-        </div>
+
+        {display === 'overview' ? (
+          <div className={styles['transaction-info']}>
+            <span
+              className={`text-4 bold ${plusMinus === '+' ? 'green' : null}`}
+            >
+              {plusMinus}${formatVal(absAmount)}
+            </span>
+            <span className={`text-5 ${styles.date}`}>
+              {formatDate(data.date)}
+            </span>
+          </div>
+        ) : (
+          <>
+            <span className="text-5 gray">{data.category}</span>
+            <span className={`text-5 ${styles.date}`}>
+              {formatDate(data.date)}
+            </span>
+            <span
+              className={`text-4 bold ${plusMinus === '+' ? 'green' : null} ${display !== 'overview' ? 'transaction-amount' : null}`}
+            >
+              {plusMinus}${formatVal(absAmount)}
+            </span>
+          </>
+        )}
       </li>
-      {i < totalRows - 1 ? <div className="divider mrg-btm-sm"></div> : null}
+      {i < totalRows - 1 ? (
+        <div
+          className={`divider ${display === 'overview' ? 'mrg-btm-sm' : null}`}
+        ></div>
+      ) : null}
     </>
   );
 };
 
-export default TransactionRow;
+export default TransactionsRow;

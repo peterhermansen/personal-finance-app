@@ -104,6 +104,18 @@ button {
   margin-bottom: 1.25rem;
 }
 
+.pd-top-sm {
+  padding-top: 1rem;
+}
+
+.pd-btm-sm {
+  padding-bottom: 1rem;
+}
+
+.pd-btm-md {
+  padding-bottom: 1.25rem;
+}
+
 /******************************/
 /* GENRAL CLASSES */
 /******************************/
@@ -133,4 +145,16 @@ button {
 
 .grid-overview {
   grid-template-columns: 38rem 1fr;
+}
+
+.grid-transaction-columns,
+div .grid-transaction-columns {
+  display: grid;
+  grid-template-columns: 1fr 7.5rem 7.5rem 12.5rem;
+  gap: 2rem;
+  align-items: center;
+}
+
+.transaction-amount {
+  justify-self: end;
 }

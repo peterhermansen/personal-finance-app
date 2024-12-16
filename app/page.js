@@ -1,13 +1,13 @@
 'use client';
-import '../styles/globals.css';
-import '../styles/queries.css';
+import '@/styles/globals.css';
+import '@/styles/queries.css';
 import SummaryOverview from '@/components/overview/SummaryOverview';
 import PotsOverview from '@/components/overview/PotsOverview';
 import TransactionsOverview from '@/components/overview/TransactionsOverview';
 import BillsOverview from '@/components/overview/BillsOverview';
 import BudgetsOverview from '@/components/overview/BudgetsOverview';
 import data from '@/data.json';
-import { useStateContext } from './stateContext';
+import { useStateContext } from '@/app/stateContext';
 
 export default function Overview() {
   const { sidebarOpen } = useStateContext();
@@ -39,7 +39,7 @@ export default function Overview() {
       <div className="content grid grid-overview">
         <div>
           <PotsOverview data={data.pots} />
-          <TransactionsOverview data={data.transactions} />
+          <TransactionsOverview data={data.transactions} display="overview" />
         </div>
 
         <div>
