@@ -1,0 +1,33 @@
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 10.625rem 15.3125rem;
+  gap: 1.5rem;
+}
+
+.search {
+  width: 20rem;
+  height: 2.8125rem;
+  padding: 0.75rem 2.5rem 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid #98908b;
+}
+
+.search:focus {
+  outline: 1px solid #201f24;
+}
+
+.search-div {
+  position: relative;
+}
+
+.search-icon {
+  fill: #201f24;
+}
+
+.search-button {
+  padding: 0.5rem;
+  position: absolute;
+  top: 50%;
+  left: 18.5rem;
+  transform: translate(-50%, -50%);
+}

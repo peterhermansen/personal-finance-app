@@ -5,6 +5,7 @@ import styles from '@/styles/components/transactions/TransactionsPage.module.css
 import data from '@/data.json';
 import { useStateContext } from '@/app/stateContext';
 import TransactionsRow from '@/components/transactions/TransactionsRow';
+import TransactionsFilters from '@/components/transactions/TransactionsFilters';
 
 export default function Transactions() {
   const { sidebarOpen } = useStateContext();
@@ -15,6 +16,7 @@ export default function Transactions() {
     >
       <h1 className="title text-1 bold">Transactions</h1>
       <div className={styles.content}>
+        <TransactionsFilters />
         <div>
           <div
             className={`${styles['transaction-headers']} grid-transaction-columns gray text-5`}
