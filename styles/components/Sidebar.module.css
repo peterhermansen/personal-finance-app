@@ -3,6 +3,7 @@
   background-color: #201f24;
   position: fixed;
   border-top-right-radius: 1rem;
+  z-index: 9999;
 }
 
 .sidebar--open {

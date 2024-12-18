@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 
 const Sidebar = () => {
   const path = usePathname();
+
   const [selectedButton, setSelectedButton] = useState(path);
   const handleButtonClick = (buttonName) => setSelectedButton(buttonName);
 
