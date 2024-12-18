@@ -21,6 +21,7 @@
   border: 1px solid #98908b;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   padding: 0.75rem 1.25rem;
   color: #201f24;
@@ -34,6 +35,10 @@
   width: 7.125rem;
 }
 
+.dropdown-button-category {
+  width: 11.0625rem;
+}
+
 .dropdown-menu {
   z-index: 9999;
   position: absolute;
@@ -43,11 +48,14 @@
   box-shadow: 0 0 1rem #88888880;
   background-color: white;
   border-radius: 0.5rem;
-  display: none;
 }
 
-.dropdown-button:focus + .dropdown-menu {
+.dropdown-menu--open {
   display: block;
+}
+
+.dropdown-menu--closed {
+  display: none;
 }
 
 .dropdown-menu-sort {

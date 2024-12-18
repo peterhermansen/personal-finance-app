@@ -1,6 +1,7 @@
 import styles from '@/styles/components/transactions/TransactionFilters.module.css';
 import Image from 'next/image';
 import DropdownRow from './DropdownRow';
+import { useState } from 'react';
 
 const SortFilter = ({
   data,
@@ -18,14 +19,18 @@ const SortFilter = ({
     'Lowest',
   ];
 
+  const [buttonClicked, setButtonClicked] = useState(false);
+  const handleButtonClick = () => setButtonClicked(!buttonClicked);
+
   return (
     <div className={styles['dropdown-div']}>
       <span className="text-4 gray">Sort by</span>
       <div className={styles.dropdown}>
         <button
           className={`${styles['dropdown-button']} ${styles['dropdown-button-sort']}`}
+          onClick={handleButtonClick}
         >
-          <span>Latest</span>
+          <span>{sortValue}</span>
           <Image
             src="/images/icon-caret-down.svg"
             alt="Finance Logo"
@@ -35,10 +40,20 @@ const SortFilter = ({
           />
         </button>
         <ul
-          className={`${styles['dropdown-menu']} ${styles['dropdown-menu-sort']}`}
+          className={`${styles['dropdown-menu']} ${styles['dropdown-menu-sort']} ${buttonClicked ? styles['dropdown-menu--open'] : styles['dropdown-menu--closed']}`}
         >
           {sortList.map((el, i, arr) => {
-            return DropdownRow(el, i, arr);
+            return (
+              <DropdownRow
+                key={el}
+                name={el}
+                i={i}
+                arr={arr}
+                value={sortValue}
+                setter={setSortValue}
+                setButtonClicked={setButtonClicked}
+              />
+            );
           })}
         </ul>
       </div>
