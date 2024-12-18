@@ -104,8 +104,16 @@ button {
   margin-bottom: 1.25rem;
 }
 
+.pd-top-tiny {
+  padding-top: 0.75rem;
+}
+
 .pd-top-sm {
   padding-top: 1rem;
+}
+
+.pd-btm-tiny {
+  padding-bottom: 0.75rem;
 }
 
 .pd-btm-sm {

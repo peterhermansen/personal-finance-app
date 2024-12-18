@@ -6,7 +6,7 @@ const StateContext = createContext();
 
 // Provider component to wrap around the app
 export const StateProvider = ({ children }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Add more states here as needed
 

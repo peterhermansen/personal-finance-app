@@ -1,6 +1,6 @@
 import styles from '@/styles/components/overview/TransactionsOverview.module.css';
 import HeaderOverview from './HeaderOverview';
-import TransactionsRow from '../transactions/TransactionsRow';
+import TransactionsRow from '../transactions/TransactionRow';
 
 const TransactionsOverview = ({ data, display }) => {
   return (

@@ -6,6 +6,7 @@
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
+  min-width: 65.75rem;
 }
 
 .transaction-headers {
