@@ -1,4 +1,4 @@
-import styles from '@/styles/components/transactions/TransactionsRow.module.css';
+import styles from '@/styles/components/transactions/TransactionRow.module.css';
 import Image from 'next/image';
 import formatVal from '@/utils/formatVal';
 import formatDate from '@/utils/formatDate';

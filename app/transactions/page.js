@@ -4,11 +4,13 @@ import '@/styles/queries.css';
 import styles from '@/styles/components/transactions/TransactionsPage.module.css';
 import data from '@/data.json';
 import { useStateContext } from '@/app/stateContext';
-import TransactionsRow from '@/components/transactions/TransactionsRow';
-import TransactionsFilters from '@/components/transactions/TransactionsFilters';
+import TransactionsRow from '@/components/transactions/TransactionRow';
+import TransactionFilters from '@/components/transactions/TransactionFilters';
+import { useState } from 'react';
 
 export default function Transactions() {
   const { sidebarOpen } = useStateContext();
+  const [filteredData, setFilteredData] = useState(data.transactions);
 
   return (
     <div
@@ -16,7 +18,11 @@ export default function Transactions() {
     >
       <h1 className="title text-1 bold">Transactions</h1>
       <div className={styles.content}>
-        <TransactionsFilters />
+        <TransactionFilters
+          filteredData={filteredData}
+          setFilteredData={setFilteredData}
+          data={data.transactions}
+        />
         <div>
           <div
             className={`${styles['transaction-headers']} grid-transaction-columns gray text-5`}
@@ -30,9 +36,14 @@ export default function Transactions() {
         </div>
 
         <ul className={styles['transaction-list']}>
-          {data.transactions.slice(0, 10).map((el, i) => {
+          {filteredData.slice(0, 10).map((el, i) => {
             return (
-              <TransactionsRow data={el} i={i} totalRows={10} key={el.date} />
+              <TransactionsRow
+                data={el}
+                i={i}
+                totalRows={filteredData.length}
+                key={el.date}
+              />
             );
           })}
         </ul>
