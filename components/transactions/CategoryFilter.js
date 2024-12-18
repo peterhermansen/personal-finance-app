@@ -3,26 +3,20 @@ import Image from 'next/image';
 import DropdownRow from './DropdownRow';
 import { useState } from 'react';
 
-const CategoryFilter = ({
-  data,
-  categoryValue,
-  setCategoryValue,
-  filteredData,
-  setFilteredData,
-}) => {
+const CategoryFilter = ({ data, categoryValue, setCategoryValue }) => {
   const allCategories = data.map((el) => el.category);
   const categoryList = ['All Transactions', ...new Set(allCategories)];
 
   const [buttonClicked, setButtonClicked] = useState(false);
-  const handleButtonClick = () => setButtonClicked(!buttonClicked);
+  const handleDropdownClick = () => setButtonClicked(!buttonClicked);
 
   return (
     <div className={styles['dropdown-div']}>
       <span className="text-4 gray">Category</span>
       <div className={styles.dropdown}>
         <button
-          className={`${styles['dropdown-button']} ${styles['dropdown-button-category']}`}
-          onClick={handleButtonClick}
+          className={`${styles['dropdown-button']} ${styles['dropdown-button-category']} ${buttonClicked ? styles['dropdown-button--active'] : null}`}
+          onClick={handleDropdownClick}
         >
           <span>{categoryValue}</span>
           <Image

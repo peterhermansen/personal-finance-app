@@ -3,13 +3,7 @@ import Image from 'next/image';
 import DropdownRow from './DropdownRow';
 import { useState } from 'react';
 
-const SortFilter = ({
-  data,
-  sortValue,
-  setSortValue,
-  filteredData,
-  setFilteredData,
-}) => {
+const SortFilter = ({ sortValue, setSortValue }) => {
   const sortList = [
     'Latest',
     'Oldest',
@@ -27,7 +21,8 @@ const SortFilter = ({
       <span className="text-4 gray">Sort by</span>
       <div className={styles.dropdown}>
         <button
-          className={`${styles['dropdown-button']} ${styles['dropdown-button-sort']}`}
+          className={`${styles['dropdown-button']} ${styles['dropdown-button-sort']} 
+          ${buttonClicked ? styles['dropdown-button--active'] : null}`}
           onClick={handleButtonClick}
         >
           <span>{sortValue}</span>

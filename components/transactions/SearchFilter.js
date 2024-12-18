@@ -1,44 +1,22 @@
 import styles from '@/styles/components/transactions/SearchFilter.module.css';
+import { useState } from 'react';
 
-const SearchFilter = ({
-  data,
-  searchValue,
-  setSearchValue,
-  filteredData,
-  setFilteredData,
-}) => {
-  const handleInputChange = (e) => setSearchValue(e.target.value);
-
-  const search = () => {
-    if (searchValue) {
-      let filtered;
-      if (data === filteredData) {
-        filtered = data.filter((obj) => {
-          return new RegExp(searchValue, 'i').test(obj.name);
-        });
-      } else {
-        filtered = filteredData.filter((obj) => {
-          return new RegExp(searchValue, 'i').test(obj.name);
-        });
-      }
-      setFilteredData(filtered);
-    } else setFilteredData(data);
-  };
+const SearchFilter = ({ setSearchValue }) => {
+  const [searchText, setSearchText] = useState('');
+  const handleInputChange = (e) => setSearchText(e.target.value);
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      search();
-    }
+    if (e.key === 'Enter') setSearchValue(searchText);
   };
 
-  const handleButtonClick = () => search();
+  const handleButtonClick = () => setSearchValue(searchText);
 
   return (
     <div className={styles['search-div']}>
       <input
         className={styles.search}
         placeholder="Search transactions"
-        value={searchValue}
+        value={searchText}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       />

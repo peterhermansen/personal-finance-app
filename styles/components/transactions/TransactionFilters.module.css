@@ -27,7 +27,7 @@
   color: #201f24;
 }
 
-.dropdown-button:focus {
+.dropdown-button--active {
   outline: 1px solid #201f24;
 }
 
