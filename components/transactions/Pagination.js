@@ -8,7 +8,7 @@ const PageNav = ({ filteredData, page, setPage }) => {
   };
 
   const handleNextClick = () => {
-    if (page < numPages) setPage(page + 1);
+    if (page < numPages - 1) setPage(page + 1);
   };
 
   const handlePageClick = (num) => {
