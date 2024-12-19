@@ -2,7 +2,7 @@
 import styles from '@/styles/components/Sidebar.module.css';
 import Image from 'next/image';
 import { useStateContext } from '@/app/stateContext.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -11,6 +11,11 @@ const Sidebar = () => {
 
   const [selectedButton, setSelectedButton] = useState(path);
   const handleButtonClick = (buttonName) => setSelectedButton(buttonName);
+
+  useEffect(() => {
+    console.log('pathchange');
+    setSelectedButton(path);
+  }, [path]);
 
   const { sidebarOpen, setSidebarOpen } = useStateContext();
   const handleMinimizeClick = () => setSidebarOpen(!sidebarOpen);
