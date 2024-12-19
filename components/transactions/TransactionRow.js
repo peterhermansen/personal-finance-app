@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import styles from '@/styles/components/transactions/TransactionRow.module.css';
 import Image from 'next/image';
 import formatVal from '@/utils/formatVal';
@@ -17,9 +18,9 @@ const TransactionsRow = ({ data, i, totalRows, display }) => {
           ${display !== 'overview' && i > 0 ? ' pd-top-sm' : null}`}
       >
         <div className={styles['transaction-name']}>
-          <Image
+          <img
             src={data.avatar}
-            alt="Transaction Image"
+            alt="Avatar"
             width="40"
             height="40"
             className={styles.avatar}
