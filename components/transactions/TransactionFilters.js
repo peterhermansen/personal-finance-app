@@ -4,7 +4,7 @@ import SearchFilter from './SearchFilter';
 import SortFilter from './SortFilter';
 import CategoryFilter from './CategoryFilter';
 
-const TransactionsFilters = ({ data, filteredData, setFilteredData }) => {
+const TransactionsFilters = ({ data, setFilteredData }) => {
   const [searchValue, setSearchValue] = useState('');
   const [sortValue, setSortValue] = useState('Latest');
   const [categoryValue, setCategoryValue] = useState('All Transactions');

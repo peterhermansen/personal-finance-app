@@ -1,0 +1,56 @@
+.pages-div {
+  display: grid;
+  grid-template-columns: 5.875rem 1fr 5.875rem;
+}
+
+.pages-div * {
+  transition: all 0.2s ease-in-out;
+}
+
+.pages {
+  justify-self: center;
+}
+
+.side-btn {
+  width: 5.875rem;
+  height: 2.5rem;
+  border: 1px solid #888888;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  color: #201f24;
+}
+
+.side-btn:hover,
+.side-btn:hover svg,
+.page:hover {
+  background-color: #888888;
+  color: white;
+  fill: white;
+}
+
+.side-btn svg {
+  fill: #201f24;
+}
+
+.pages {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.page {
+  height: 2.5rem;
+  width: 2.5rem;
+  border: 1px solid #888888;
+  border-radius: 0.5rem;
+  color: #201f24;
+}
+
+.page--active,
+.page--active:focus {
+  background-color: black;
+  color: white;
+}

@@ -3,10 +3,15 @@
   justify-content: space-between;
 }
 
+.header a {
+  text-decoration: none;
+}
+
 .btn {
   display: flex;
   gap: 0.75rem;
   align-items: center;
+  text-decoration: none;
 }
 
 .btn span {

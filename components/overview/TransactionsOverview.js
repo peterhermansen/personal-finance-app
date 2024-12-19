@@ -5,7 +5,11 @@ import TransactionsRow from '../transactions/TransactionRow';
 const TransactionsOverview = ({ data, display }) => {
   return (
     <div className={styles.transactions}>
-      <HeaderOverview title="Transactions" btnText="View All" />
+      <HeaderOverview
+        title="Transactions"
+        btnText="View All"
+        link="/transactions"
+      />
       <ul className={styles['transaction-rows']}>
         {data.slice(0, 5).map((el, i) => {
           return (

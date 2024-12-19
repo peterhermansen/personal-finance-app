@@ -28,7 +28,7 @@ const PotsOverview = ({ data }) => {
 
   return (
     <div className={`${styles.pots}`}>
-      <HeaderOverview title="Pots" btnText="See Details" />
+      <HeaderOverview title="Pots" btnText="See Details" link="/pots" />
       <div className={`${styles['pots-summary']}`}>
         <div className={`${styles['pots-total']}`}>
           <Image
