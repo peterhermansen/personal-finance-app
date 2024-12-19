@@ -3,6 +3,10 @@
   grid-template-columns: 5.875rem 1fr 5.875rem;
 }
 
+.pages-div * {
+  transition: all 0.2s ease-in-out;
+}
+
 .pages {
   justify-self: center;
 }
