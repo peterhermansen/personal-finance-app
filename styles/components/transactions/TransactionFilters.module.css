@@ -27,6 +27,10 @@
   color: #201f24;
 }
 
+.dropdown-button:hover {
+  background-color: #f2f2f2;
+}
+
 .dropdown-button--active {
   outline: 1px solid #201f24;
 }

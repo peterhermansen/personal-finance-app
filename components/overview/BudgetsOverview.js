@@ -46,7 +46,7 @@ const BudgetsOverview = ({ budgets, transactions }) => {
 
   return (
     <div className={styles.budgets}>
-      <HeaderOverview title="Budgets" btnText="See Details" />
+      <HeaderOverview title="Budgets" btnText="See Details" link="/budgets" />
       <div className={styles.content}>
         <div className={styles.chart}>
           <BudgetsChart data={budgets} />

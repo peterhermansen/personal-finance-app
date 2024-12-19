@@ -6,11 +6,13 @@ import data from '@/data.json';
 import { useStateContext } from '@/app/stateContext';
 import TransactionsRow from '@/components/transactions/TransactionRow';
 import TransactionFilters from '@/components/transactions/TransactionFilters';
+import Pagination from '@/components/transactions/Pagination';
 import { useState } from 'react';
 
 export default function Transactions() {
   const { sidebarOpen } = useStateContext();
   const [filteredData, setFilteredData] = useState(data.transactions);
+  const [page, setPage] = useState(0);
 
   return (
     <div
@@ -36,7 +38,7 @@ export default function Transactions() {
         </div>
 
         <ul className={styles['transaction-list']}>
-          {filteredData.slice(0, 10).map((el, i) => {
+          {filteredData.slice(page * 10, page * 10 + 10).map((el, i) => {
             return (
               <TransactionsRow
                 data={el}
@@ -47,6 +49,8 @@ export default function Transactions() {
             );
           })}
         </ul>
+
+        <Pagination filteredData={filteredData} page={page} setPage={setPage} />
       </div>
     </div>
   );

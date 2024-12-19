@@ -48,7 +48,11 @@ const BillsOverview = ({ data }) => {
 
   return (
     <div className={styles.bills}>
-      <HeaderOverview title="Recurring Bills" btnText="See Details" />
+      <HeaderOverview
+        title="Recurring Bills"
+        btnText="See Details"
+        link="/bills"
+      />
       <div className={styles['bill-rows']}>
         {billRow('Paid Bills', paidTotal, 'green-bg')}
         {billRow('Total Upcoming', upcomingTotal, 'yellow-bg')}
