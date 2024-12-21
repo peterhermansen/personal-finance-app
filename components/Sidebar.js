@@ -12,10 +12,7 @@ const Sidebar = () => {
   const [selectedButton, setSelectedButton] = useState(path);
   const handleButtonClick = (buttonName) => setSelectedButton(buttonName);
 
-  useEffect(() => {
-    console.log('pathchange');
-    setSelectedButton(path);
-  }, [path]);
+  useEffect(() => setSelectedButton(path), [path]);
 
   const { sidebarOpen, setSidebarOpen } = useStateContext();
   const handleMinimizeClick = () => setSidebarOpen(!sidebarOpen);
@@ -111,7 +108,7 @@ const Sidebar = () => {
             </button>
           </Link>
 
-          <Link href="/budgets">
+          <Link href="/pots">
             <button
               className={`${styles.btn} ${selectedButton === '/pots' ? styles['btn--active'] : styles['btn--inactive']}`}
               onClick={() => handleButtonClick('/pots')}
@@ -133,10 +130,10 @@ const Sidebar = () => {
             </button>
           </Link>
 
-          <Link href="/budgets">
+          <Link href="/bills">
             <button
-              className={`${styles.btn} ${selectedButton === '/recurring' ? styles['btn--active'] : styles['btn--inactive']}`}
-              onClick={() => handleButtonClick('/recurring')}
+              className={`${styles.btn} ${selectedButton === '/bills' ? styles['btn--active'] : styles['btn--inactive']}`}
+              onClick={() => handleButtonClick('/bills')}
             >
               <svg
                 height="17"

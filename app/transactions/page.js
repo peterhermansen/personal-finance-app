@@ -9,7 +9,7 @@ import TransactionFilters from '@/components/transactions/TransactionFilters';
 import Pagination from '@/components/transactions/Pagination';
 import { useState } from 'react';
 
-export default function Transactions() {
+export default function TransactionsPage() {
   const { sidebarOpen } = useStateContext();
   const [filteredData, setFilteredData] = useState(data.transactions);
   const [page, setPage] = useState(0);
