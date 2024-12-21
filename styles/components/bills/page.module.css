@@ -1,0 +1,16 @@
+.content {
+  display: grid;
+  grid-template-columns: 21.0625rem 1fr;
+  gap: 1.5rem;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.right {
+  width: 100%;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.75rem;
+}

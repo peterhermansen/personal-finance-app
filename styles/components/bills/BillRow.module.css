@@ -1,0 +1,22 @@
+.bill-row {
+  display: grid;
+  grid-template-columns: 1fr 7.5rem 6.25rem;
+  align-items: center;
+  padding: 1.25rem 0.75rem;
+}
+.bill-name {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.avatar {
+  border-radius: 3rem;
+}
+.due-date {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.amount {
+  justify-self: end;
+}
