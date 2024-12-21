@@ -1,4 +1,7 @@
 export default function billData(data) {
+  const day = (bill) => +bill.date.slice(8, 10);
+  const today = new Date().getDate();
+
   // Remove non-recurring bills
   let recurring = data.filter((el) => el.recurring);
 
@@ -7,22 +10,22 @@ export default function billData(data) {
     return arr.findIndex((item) => item.name === el.name) === i;
   });
 
-  const today = new Date().getDate();
+  // Sort by day of the month
+  recurring.sort((a, b) => day(a) - day(b));
 
   // Filter bills that were already paid
-  const paid = recurring.filter((el) => {
-    if (+el.date.slice(8, 10) <= today) return true;
+  const paidBills = recurring.filter((el) => {
+    if (day(el) <= today) return true;
   });
 
   // Filter bills that are upcoming this month
-  const upcoming = recurring.filter((el) => {
-    if (+el.date.slice(8, 10) > today) return true;
+  const upcomingBills = recurring.filter((el) => {
+    if (day(el) > today) return true;
   });
 
   // Filter bills that are upcoming this week
-  const dueSoon = recurring.filter((el) => {
-    if (+el.date.slice(8, 10) > today && +el.date.slice(8, 10) < today + 7)
-      return true;
+  const dueSoonBills = recurring.filter((el) => {
+    if (day(el) > today && day(el) < today + 7) return true;
   });
 
   // Reduce arrays to find absolute value of selected bills
@@ -30,9 +33,21 @@ export default function billData(data) {
     return Math.abs(+arr.reduce((acc, cur) => acc + cur.amount, 0).toFixed(2));
   }
 
-  const paidTotal = totalValue(paid);
-  const upcomingTotal = totalValue(upcoming);
-  const dueSoonTotal = totalValue(dueSoon);
+  const paid = {
+    total: totalValue(paidBills),
+    num: paidBills.length,
+    arr: paidBills,
+  };
+  const upcoming = {
+    total: totalValue(upcomingBills),
+    num: upcomingBills.length,
+    arr: upcomingBills,
+  };
+  const dueSoon = {
+    total: totalValue(dueSoonBills),
+    num: dueSoonBills.length,
+    arr: dueSoonBills,
+  };
 
-  return { paidTotal, upcomingTotal, dueSoonTotal };
+  return { recurring, paid, upcoming, dueSoon, today };
 }
