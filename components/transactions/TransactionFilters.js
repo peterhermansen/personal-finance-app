@@ -1,59 +1,31 @@
 import styles from '@/styles/components/transactions/TransactionFilters.module.css';
 import { useState, useEffect, useCallback } from 'react';
-import SearchFilter from './SearchFilter';
-import SortFilter from './SortFilter';
-import CategoryFilter from './CategoryFilter';
+import SearchFilter from '../filters/SearchFilter';
+import SortFilter from '../filters/SortFilter';
+import CategoryFilter from '../filters/CategoryFilter';
+import filterSearch from '@/utils/filterSearch';
+import filterCategory from '@/utils/filterCategory';
+import filterSort from '@/utils/filterSort';
 
-const TransactionsFilters = ({ data, setFilteredData }) => {
+const TransactionFilters = ({ data, setFilteredData }) => {
   const [searchValue, setSearchValue] = useState('');
   const [sortValue, setSortValue] = useState('Latest');
   const [categoryValue, setCategoryValue] = useState('All Transactions');
 
   const searchFilter = useCallback(() => {
-    if (searchValue) {
-      const filtered = data.filter((obj) => {
-        return new RegExp(searchValue, 'i').test(obj.name);
-      });
-      return filtered;
-    } else return data;
+    return filterSearch(searchValue, data);
   }, [searchValue, data]);
 
   const categoryFilter = useCallback(
     (results) => {
-      if (categoryValue !== 'All Transactions') {
-        const filtered = results.filter((obj) => {
-          return categoryValue === obj.category;
-        });
-        return filtered;
-      } else {
-        return results;
-      }
+      return filterCategory(categoryValue, results);
     },
     [categoryValue],
   );
 
   const sortResults = useCallback(
     (results) => {
-      if (sortValue === 'Oldest') {
-        return [...results].sort((a, b) => {
-          const dateA = new Date(a.date);
-          const dateB = new Date(b.date);
-          return dateA - dateB;
-        });
-      }
-      if (sortValue === 'A to Z') {
-        return [...results].sort((a, b) => a.name.localeCompare(b.name));
-      }
-      if (sortValue === 'Z to A') {
-        return [...results].sort((a, b) => b.name.localeCompare(a.name));
-      }
-      if (sortValue === 'Highest') {
-        return [...results].sort((a, b) => b.amount - a.amount);
-      }
-      if (sortValue === 'Lowest') {
-        return [...results].sort((a, b) => a.amount - b.amount);
-      }
-      return results;
+      return filterSort(sortValue, results);
     },
     [sortValue],
   );
@@ -87,4 +59,4 @@ const TransactionsFilters = ({ data, setFilteredData }) => {
   );
 };
 
-export default TransactionsFilters;
+export default TransactionFilters;

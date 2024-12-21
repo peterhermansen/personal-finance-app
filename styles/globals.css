@@ -34,6 +34,10 @@ button {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.content {
+  min-width: 65.75rem;
+}
+
 .text-1 {
   font-size: 2rem;
   line-height: 120%;
@@ -88,6 +92,14 @@ button {
   color: #888888;
 }
 
+.white {
+  color: white;
+}
+
+.red {
+  color: #c94736;
+}
+
 .green-bg {
   background-color: #277c78;
 }
@@ -102,6 +114,10 @@ button {
 
 .mrg-btm-sm {
   margin-bottom: 1.25rem;
+}
+
+.mrg-btm-1 {
+  margin-bottom: 1rem;
 }
 
 .pd-top-tiny {

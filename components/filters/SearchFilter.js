@@ -1,4 +1,4 @@
-import styles from '@/styles/components/transactions/SearchFilter.module.css';
+import styles from '@/styles/components/filters/SearchFilter.module.css';
 import { useState } from 'react';
 
 const SearchFilter = ({ setSearchValue }) => {

@@ -9,7 +9,7 @@ import BudgetsOverview from '@/components/overview/BudgetsOverview';
 import data from '@/data.json';
 import { useStateContext } from '@/app/stateContext';
 
-export default function Overview() {
+export default function OverviewPage() {
   const { sidebarOpen } = useStateContext();
 
   return (

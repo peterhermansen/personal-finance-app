@@ -1,6 +1,6 @@
-import styles from '@/styles/components/transactions/TransactionFilters.module.css';
+import styles from '@/styles/components/filters/Dropdown.module.css';
 import Image from 'next/image';
-import DropdownRow from './DropdownRow';
+import DropdownRow from '../transactions/DropdownRow';
 import { useState } from 'react';
 
 const SortFilter = ({ sortValue, setSortValue }) => {
