@@ -22,7 +22,7 @@ button {
 }
 
 /******************************/
-/* GENRAL REUSABLE COMPONENTS */
+/* GENRAL REUSABLE CLASSES */
 /******************************/
 
 .grid {
@@ -32,10 +32,6 @@ button {
 
 .grid--2-cols {
   grid-template-columns: repeat(2, 1fr);
-}
-
-.content {
-  min-width: 65.75rem;
 }
 
 .text-1 {
@@ -151,7 +147,14 @@ button {
   padding: 2.5rem 2.5rem 2.5rem 8rem;
 }
 
-.title {
+.content {
+  min-width: 65.75rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 2.5rem;
 }
 
@@ -181,4 +184,11 @@ div .grid-transaction-columns {
 
 .transaction-amount {
   justify-self: end;
+}
+
+.btn-add {
+  background-color: #201f24;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
