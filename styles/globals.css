@@ -88,6 +88,10 @@ button {
   color: #888888;
 }
 
+.dark-gray {
+  color: #696868;
+}
+
 .white {
   color: white;
 }
@@ -191,4 +195,8 @@ div .grid-transaction-columns {
   color: white;
   padding: 1rem;
   border-radius: 0.5rem;
+}
+
+.btn-add:hover {
+  background-color: #696868;
 }
