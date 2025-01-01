@@ -1,10 +1,14 @@
 'use client';
+import budgetData from '@/utils/budgetData';
 import { Chart, ArcElement } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import styles from '@/styles/components/budgets/BudgetsChart.module.css';
 
 Chart.register(ArcElement);
 
-const BudgetsChart = ({ data }) => {
+const BudgetsChart = ({ budgets, transactions }) => {
+  const { maxBudget, spentBudget } = budgetData(budgets, transactions);
+
   const chartData = {
     datasets: [
       {
@@ -19,7 +23,7 @@ const BudgetsChart = ({ data }) => {
     ],
   };
 
-  data.forEach((budget) => {
+  budgets.forEach((budget) => {
     chartData.datasets[0].data.push(budget.maximum);
     chartData.datasets[0].backgroundColor.push(budget.theme);
     chartData.datasets[1].data.push(budget.maximum);
@@ -27,7 +31,15 @@ const BudgetsChart = ({ data }) => {
   });
 
   const options = { borderWidth: 0, cutout: '65%', animation: false };
-  return <Doughnut data={chartData} options={options} />;
+  return (
+    <div className={styles.chart}>
+      <Doughnut data={chartData} options={options} />
+      <div className={styles['chart-text']}>
+        <span className="text-1 bold">${spentBudget}</span>
+        <span className="text-5 gray">of ${maxBudget} limit</span>
+      </div>
+    </div>
+  );
 };
 
 export default BudgetsChart;
