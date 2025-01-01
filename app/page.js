@@ -16,7 +16,9 @@ export default function OverviewPage() {
     <div
       className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
     >
-      <h1 className="title text-1 bold">Overview</h1>
+      <div className="top">
+        <h1 className="title text-1 bold">Overview</h1>
+      </div>
 
       <div className="summaries">
         <SummaryOverview

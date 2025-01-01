@@ -18,7 +18,10 @@ export default function TransactionsPage() {
     <div
       className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
     >
-      <h1 className="title text-1 bold">Transactions</h1>
+      <div className="top">
+        <h1 className="title text-1 bold">Transactions</h1>
+      </div>
+
       <div className={styles.content}>
         <TransactionFilters
           filteredData={filteredData}

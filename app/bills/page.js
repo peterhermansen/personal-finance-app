@@ -18,7 +18,10 @@ export default function BillsPage() {
       className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
     >
       <div className="content">
-        <h1 className="title text-1 bold">Recurring Bills</h1>
+        <div className="top">
+          <h1 className="title text-1 bold">Recurring Bills</h1>
+        </div>
+
         <div className={styles.content}>
           <div className={styles.left}>
             <Total bills={bills} />
