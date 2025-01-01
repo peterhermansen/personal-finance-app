@@ -3,7 +3,7 @@ import styles from '@/styles/components/transactions/TransactionRow.module.css';
 import formatVal from '@/utils/formatVal';
 import formatDate from '@/utils/formatDate';
 
-const TransactionsRow = ({ data, i, totalRows, display }) => {
+const TransactionsRow = ({ data, i, totalRows, display, budget }) => {
   const plusMinus = data.amount > 0 ? '+' : '-';
   const absAmount = Math.abs(data.amount);
 
@@ -12,7 +12,7 @@ const TransactionsRow = ({ data, i, totalRows, display }) => {
       <li
         className={`
           ${styles['transaction-row']} 
-          ${display !== 'overview' ? 'grid-transaction-columns' : 'pd-btm-md'} 
+          ${display !== 'overview' ? 'grid-transaction-columns' : null} 
           ${display !== 'overview' && i < totalRows ? 'pd-btm-sm' : null}
           ${display !== 'overview' && i > 0 ? ' pd-top-sm' : null}`}
       >
@@ -20,17 +20,19 @@ const TransactionsRow = ({ data, i, totalRows, display }) => {
           <img
             src={data.avatar}
             alt="Avatar"
-            width="40"
-            height="40"
+            width={budget ? '32' : '40'}
+            height={budget ? '32' : '40'}
             className={styles.avatar}
           />
-          <span className="text-4 bold">{data.name}</span>
+          <span className={`${budget ? 'text-5' : 'text-4'} bold`}>
+            {data.name}
+          </span>
         </div>
 
         {display === 'overview' ? (
           <div className={styles['transaction-info']}>
             <span
-              className={`text-4 bold ${plusMinus === '+' ? 'green' : null}`}
+              className={`${budget ? 'text-5' : 'text-4'} bold ${plusMinus === '+' ? 'green' : null}`}
             >
               {plusMinus}${formatVal(absAmount)}
             </span>
@@ -54,7 +56,7 @@ const TransactionsRow = ({ data, i, totalRows, display }) => {
       </li>
       {i < totalRows - 1 ? (
         <div
-          className={`divider ${display === 'overview' ? 'mrg-btm-sm' : null}`}
+          className={`${budget ? 'divider-dark' : 'divider'} ${display === 'overview' && !budget ? 'mrg-btm-sm mrg-top-sm' : null} ${budget ? 'mrg-top-tiny mrg-btm-tiny' : null}`}
         ></div>
       ) : null}
     </>

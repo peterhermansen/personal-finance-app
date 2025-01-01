@@ -112,12 +112,28 @@ button {
   background-color: #82c9d7;
 }
 
-.mrg-btm-sm {
-  margin-bottom: 1.25rem;
+.mrg-btm-tiny {
+  margin-bottom: 0.75rem;
 }
 
 .mrg-btm-1 {
   margin-bottom: 1rem;
+}
+
+.mrg-btm-sm {
+  margin-bottom: 1.25rem;
+}
+
+.mrg-top-tiny {
+  margin-top: 0.75rem;
+}
+
+.mrg-top-1 {
+  margin-top: 1rem;
+}
+
+.mrg-top-sm {
+  margin-top: 1.25rem;
 }
 
 .pd-top-tiny {
@@ -171,6 +187,11 @@ button {
 
 .divider {
   background-color: #f2f2f2;
+  height: 1px;
+}
+
+.divider-dark {
+  background-color: #e5e5e5;
   height: 1px;
 }
 

@@ -2,27 +2,10 @@ import styles from '@/styles/components/overview/BudgetsOverview.module.css';
 import HeaderOverview from './HeaderOverview';
 import formatVal from '@/utils/formatVal';
 import BudgetsChart from '../budgets/BudgetsChart';
+import budgetData from '@/utils/budgetData';
 
 const BudgetsOverview = ({ budgets, transactions }) => {
-  const budgetNames = budgets.map((el) => el.category);
-  const maxBudget = budgets.reduce((acc, cur) => acc + cur.maximum, 0);
-  const spentBudget = Math.ceil(
-    Math.abs(
-      transactions
-        // Filter transactions to budget categories + less than one month old
-        .filter((el) => {
-          const transactionDate = new Date(el.date);
-          const curDate = new Date('2024-08-19T20:23:12Z');
-          if (
-            budgetNames.includes(el.category) &&
-            curDate - transactionDate < 1000 * 60 * 60 * 24 * 30
-          )
-            return el;
-        })
-        // Reduce budgeted transactions to total value
-        .reduce((acc, cur) => acc + cur.amount, 0),
-    ),
-  );
+  const budgetObj = budgetData(budgets, transactions);
 
   function generateBudgetEl(budget) {
     const budgetColor = {
@@ -49,11 +32,7 @@ const BudgetsOverview = ({ budgets, transactions }) => {
       <HeaderOverview title="Budgets" btnText="See Details" link="/budgets" />
       <div className={styles.content}>
         <div className={styles.chart}>
-          <BudgetsChart data={budgets} />
-          <div className={styles['chart-text']}>
-            <span className="text-1 bold">${spentBudget}</span>
-            <span className="text-5 gray">of ${maxBudget} limit</span>
-          </div>
+          <BudgetsChart budgetObj={budgetObj} budgets={budgets} />
         </div>
         <div className={styles.details}>
           {budgets.slice(0, 4).map((budget) => generateBudgetEl(budget))}
