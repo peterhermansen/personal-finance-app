@@ -1,13 +1,12 @@
 'use client';
-import budgetData from '@/utils/budgetData';
 import { Chart, ArcElement } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import styles from '@/styles/components/budgets/BudgetsChart.module.css';
 
 Chart.register(ArcElement);
 
-const BudgetsChart = ({ budgets, transactions }) => {
-  const { maxBudget, spentBudget } = budgetData(budgets, transactions);
+const BudgetsChart = ({ budgetObj, budgets }) => {
+  const { spentBudget, maxBudget } = budgetObj;
 
   const chartData = {
     datasets: [

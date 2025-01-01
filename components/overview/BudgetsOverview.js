@@ -2,8 +2,11 @@ import styles from '@/styles/components/overview/BudgetsOverview.module.css';
 import HeaderOverview from './HeaderOverview';
 import formatVal from '@/utils/formatVal';
 import BudgetsChart from '../budgets/BudgetsChart';
+import budgetData from '@/utils/budgetData';
 
 const BudgetsOverview = ({ budgets, transactions }) => {
+  const budgetObj = budgetData(budgets, transactions);
+
   function generateBudgetEl(budget) {
     const budgetColor = {
       backgroundColor: budget.theme,
@@ -29,7 +32,7 @@ const BudgetsOverview = ({ budgets, transactions }) => {
       <HeaderOverview title="Budgets" btnText="See Details" link="/budgets" />
       <div className={styles.content}>
         <div className={styles.chart}>
-          <BudgetsChart budgets={budgets} transactions={transactions} />
+          <BudgetsChart budgetObj={budgetObj} budgets={budgets} />
         </div>
         <div className={styles.details}>
           {budgets.slice(0, 4).map((budget) => generateBudgetEl(budget))}

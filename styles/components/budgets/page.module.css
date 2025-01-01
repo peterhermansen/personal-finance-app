@@ -1,0 +1,27 @@
+.content {
+  display: grid;
+  grid-template-columns: 26.75rem 1fr;
+  gap: 1.5rem;
+}
+
+.summary {
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: start;
+  gap: 3rem;
+}
+
+.chart {
+  width: 15rem;
+  height: 15rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

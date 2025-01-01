@@ -3,7 +3,6 @@ import Image from 'next/image';
 import formatVal from '@/utils/formatVal';
 
 const Pot = ({ pot }) => {
-  console.log(pot);
   const percent = (pot.total / pot.target) * 100;
 
   return (
