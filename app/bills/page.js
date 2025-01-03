@@ -2,16 +2,25 @@
 import '@/styles/globals.css';
 import '@/styles/queries.css';
 import styles from '@/styles/components/bills/page.module.css';
-import data from '@/data.json';
 import { useStateContext } from '@/app/stateContext';
 import billData from '@/utils/billData';
 import Summary from '@/components/bills/Summary';
 import Total from '@/components/bills/Total';
 import Bills from '@/components/bills/Bills';
+import { useState, useEffect } from 'react';
+import Loading from '@/components/Loading';
 
 export default function BillsPage() {
-  const { sidebarOpen } = useStateContext();
-  const bills = billData(data.transactions);
+  const { sidebarOpen, transactions } = useStateContext();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (transactions) setLoading(false);
+  }, [transactions]);
+
+  if (loading) return <Loading />;
+
+  const bills = billData(transactions);
 
   return (
     <div

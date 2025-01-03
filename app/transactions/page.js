@@ -2,17 +2,27 @@
 import '@/styles/globals.css';
 import '@/styles/queries.css';
 import styles from '@/styles/components/transactions/TransactionsPage.module.css';
-import data from '@/data.json';
 import { useStateContext } from '@/app/stateContext';
 import TransactionsRow from '@/components/transactions/TransactionRow';
 import TransactionFilters from '@/components/transactions/TransactionFilters';
 import Pagination from '@/components/transactions/Pagination';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Loading from '@/components/Loading';
 
 export default function TransactionsPage() {
-  const { sidebarOpen } = useStateContext();
-  const [filteredData, setFilteredData] = useState(data.transactions);
+  const { sidebarOpen, transactions } = useStateContext();
   const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [filteredData, setFilteredData] = useState();
+
+  useEffect(() => {
+    if (transactions) {
+      setLoading(false);
+      setFilteredData(transactions);
+    }
+  }, [transactions]);
+
+  if (loading) if (loading) return <Loading />;
 
   return (
     <div
@@ -26,7 +36,7 @@ export default function TransactionsPage() {
         <TransactionFilters
           filteredData={filteredData}
           setFilteredData={setFilteredData}
-          data={data.transactions}
+          data={transactions}
         />
         <div>
           <div
