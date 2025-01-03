@@ -1,12 +1,20 @@
 'use client';
 import '@/styles/globals.css';
 import '@/styles/queries.css';
-import data from '@/data.json';
 import { useStateContext } from '@/app/stateContext';
 import Pot from '@/components/pots/Pot';
+import { useState, useEffect } from 'react';
+import Loading from '@/components/Loading';
 
 export default function PotsPage() {
-  const { sidebarOpen } = useStateContext();
+  const { sidebarOpen, pots } = useStateContext();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (pots) setLoading(false);
+  }, [pots]);
+
+  if (loading) return <Loading />;
 
   return (
     <div
@@ -18,7 +26,7 @@ export default function PotsPage() {
           <button className="btn-add text-4 bold">+ Add New Pot</button>
         </div>
         <div className="grid grid--2-cols">
-          {data.pots.map((el) => {
+          {pots.map((el) => {
             return <Pot pot={el} key={el.name} />;
           })}
         </div>

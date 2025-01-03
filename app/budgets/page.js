@@ -1,17 +1,26 @@
 'use client';
 import '@/styles/globals.css';
 import '@/styles/queries.css';
-import data from '@/data.json';
 import { useStateContext } from '@/app/stateContext';
 import styles from '@/styles/components/budgets/page.module.css';
 import BudgetsChart from '@/components/budgets/BudgetsChart';
 import Summary from '@/components/budgets/Summary';
 import budgetData from '@/utils/budgetData';
 import Budget from '@/components/budgets/Budget';
+import { useState, useEffect } from 'react';
+import Loading from '@/components/Loading';
 
 export default function BudgetsPage() {
-  const { sidebarOpen } = useStateContext();
-  const budgetObj = budgetData(data.budgets, data.transactions);
+  const { sidebarOpen, budgets, transactions } = useStateContext();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (transactions && budgets) setLoading(false);
+  }, [transactions, budgets]);
+
+  if (loading) return <Loading />;
+
+  const budgetObj = budgetData(budgets, transactions);
 
   return (
     <div
@@ -26,13 +35,13 @@ export default function BudgetsPage() {
         <div className={styles.content}>
           <div className={styles.summary}>
             <div className={styles.chart}>
-              <BudgetsChart budgetObj={budgetObj} budgets={data.budgets} />
+              <BudgetsChart budgetObj={budgetObj} budgets={budgets} />
             </div>
-            <Summary budgetObj={budgetObj} budgets={data.budgets} />
+            <Summary budgetObj={budgetObj} budgets={budgets} />
           </div>
 
           <div className={styles.details}>
-            {data.budgets.map((el) => {
+            {budgets.map((el) => {
               return (
                 <Budget budget={el} budgetObj={budgetObj} key={el.category} />
               );

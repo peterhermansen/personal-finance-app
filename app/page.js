@@ -6,11 +6,20 @@ import PotsOverview from '@/components/overview/PotsOverview';
 import TransactionsOverview from '@/components/overview/TransactionsOverview';
 import BillsOverview from '@/components/overview/BillsOverview';
 import BudgetsOverview from '@/components/overview/BudgetsOverview';
-import data from '@/data.json';
 import { useStateContext } from '@/app/stateContext';
+import { useState, useEffect } from 'react';
+import Loading from '@/components/Loading';
 
 export default function OverviewPage() {
-  const { sidebarOpen } = useStateContext();
+  const { sidebarOpen, balance, budgets, pots, transactions } =
+    useStateContext();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (balance && budgets && pots && transactions) setLoading(false);
+  }, [balance, budgets, pots, transactions]);
+
+  if (loading) return <Loading />;
 
   return (
     <div
@@ -23,33 +32,26 @@ export default function OverviewPage() {
       <div className="summaries">
         <SummaryOverview
           header="Current Balance"
-          value={data.balance.current}
+          value={balance.current}
           style="dark"
         />
-        <SummaryOverview
-          header="Income"
-          value={data.balance.income}
-          style="light"
-        />
+        <SummaryOverview header="Income" value={balance.income} style="light" />
         <SummaryOverview
           header="Expenses"
-          value={data.balance.expenses}
+          value={balance.expenses}
           style="light"
         />
       </div>
 
       <div className="content grid grid-overview">
         <div>
-          <PotsOverview data={data.pots} />
-          <TransactionsOverview data={data.transactions} display="overview" />
+          <PotsOverview data={pots} />
+          <TransactionsOverview data={transactions} display="overview" />
         </div>
 
         <div>
-          <BudgetsOverview
-            budgets={data.budgets}
-            transactions={data.transactions}
-          />
-          <BillsOverview data={data.transactions} />
+          <BudgetsOverview budgets={budgets} transactions={transactions} />
+          <BillsOverview data={transactions} />
         </div>
       </div>
     </div>
