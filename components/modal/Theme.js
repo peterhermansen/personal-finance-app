@@ -3,7 +3,13 @@ import { useState, useEffect } from 'react';
 import DropdownRow from '../transactions/DropdownRow';
 import colorUsed from '@/utils/colorUsed';
 
-const Theme = ({ budgets, formObj, setFormObj }) => {
+const Theme = ({
+  budgets,
+  formObj,
+  setFormObj,
+  activeDropdown,
+  setActiveDropdown,
+}) => {
   const [theme, setTheme] = useState(['#277c78', 'Green']);
   const [themeList, setThemeList] = useState([
     ['#277c78', 'Green', false],
@@ -23,7 +29,10 @@ const Theme = ({ budgets, formObj, setFormObj }) => {
     ['#be6c49', 'Orange', false],
   ]);
   const [buttonClicked, setButtonClicked] = useState(false);
-  const handleDropdownClick = () => setButtonClicked(!buttonClicked);
+  const handleDropdownClick = () => {
+    setActiveDropdown('theme');
+    setButtonClicked(!buttonClicked);
+  };
 
   const updatedThemeList = [...themeList];
 
@@ -49,6 +58,10 @@ const Theme = ({ budgets, formObj, setFormObj }) => {
     setFormObj(formObj);
     console.log(formObj);
   }, [theme, formObj, setFormObj]);
+
+  useEffect(() => {
+    if (activeDropdown !== 'theme') setButtonClicked(false);
+  }, [activeDropdown]);
 
   return (
     <div className={styles.container}>

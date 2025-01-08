@@ -8,6 +8,7 @@ import Theme from './Theme';
 
 const CreateEditMenu = ({ buttonSource, setButtonClicked }) => {
   const { budgets, setBudgets } = useStateContext();
+  const [activeDropdown, setActiveDropdown] = useState('');
   const [formObj, setFormObj] = useState({
     theme: '',
     maximum: 0,
@@ -57,10 +58,18 @@ const CreateEditMenu = ({ buttonSource, setButtonClicked }) => {
             budgets={budgets}
             formObj={formObj}
             setFormObj={setFormObj}
+            activeDropdown={activeDropdown}
+            setActiveDropdown={setActiveDropdown}
           />
         ) : null}
         <Amount textObj={textObj} formObj={formObj} setFormObj={setFormObj} />
-        <Theme budgets={budgets} formObj={formObj} setFormObj={setFormObj} />
+        <Theme
+          budgets={budgets}
+          formObj={formObj}
+          setFormObj={setFormObj}
+          activeDropdown={activeDropdown}
+          setActiveDropdown={setActiveDropdown}
+        />
         <button
           className={`text-4 bold ${styles.submit}`}
           onClick={handleFormSubmit}

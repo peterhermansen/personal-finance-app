@@ -16,7 +16,8 @@ const Amount = ({ textObj, formObj, setFormObj }) => {
   }, [input]);
 
   useEffect(() => {
-    formObj.maximum = Number(input);
+    console.log();
+    formObj.maximum = Number(Number(input).toFixed(2));
     setFormObj(formObj);
   }, [input, formObj, setFormObj]);
 

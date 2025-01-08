@@ -3,7 +3,13 @@ import { useState, useEffect } from 'react';
 import DropdownRow from '../transactions/DropdownRow';
 import categoryUsed from '@/utils/categoryUsed';
 
-const Category = ({ budgets, formObj, setFormObj }) => {
+const Category = ({
+  budgets,
+  formObj,
+  setFormObj,
+  activeDropdown,
+  setActiveDropdown,
+}) => {
   const [category, setCategory] = useState(['Entertainment', false]);
 
   const [categoryList, setCategoryList] = useState([
@@ -20,7 +26,10 @@ const Category = ({ budgets, formObj, setFormObj }) => {
   ]);
 
   const [buttonClicked, setButtonClicked] = useState(false);
-  const handleDropdownClick = () => setButtonClicked(!buttonClicked);
+  const handleDropdownClick = () => {
+    setActiveDropdown('category');
+    setButtonClicked(!buttonClicked);
+  };
 
   const updatedCategoryList = [...categoryList];
 
@@ -45,6 +54,10 @@ const Category = ({ budgets, formObj, setFormObj }) => {
     formObj.category = category[0];
     setFormObj(formObj);
   }, [category, formObj, setFormObj]);
+
+  useEffect(() => {
+    if (activeDropdown !== 'category') setButtonClicked(false);
+  }, [activeDropdown]);
 
   return (
     <div className={styles.container}>
