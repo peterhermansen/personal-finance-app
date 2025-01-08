@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import DropdownRow from '../transactions/DropdownRow';
 import colorUsed from '@/utils/colorUsed';
 
-const Theme = ({ budgets }) => {
+const Theme = ({ budgets, formObj, setFormObj }) => {
   const [theme, setTheme] = useState(['#277c78', 'Green']);
   const [themeList, setThemeList] = useState([
     ['#277c78', 'Green', false],
@@ -43,6 +43,12 @@ const Theme = ({ budgets }) => {
   useEffect(() => {
     setTheme(themeList[0].slice(0, 2));
   }, [themeList]);
+
+  useEffect(() => {
+    formObj.theme = theme[0].toUpperCase();
+    setFormObj(formObj);
+    console.log(formObj);
+  }, [theme, formObj, setFormObj]);
 
   return (
     <div className={styles.container}>

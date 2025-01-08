@@ -1,11 +1,22 @@
-import { getBudgets } from '@/lib/db';
+import { getBudgets, updateBudgets } from '@/lib/db';
 
 export async function GET() {
   try {
-    const balance = await getBudgets();
-    return new Response(JSON.stringify(balance), { status: 200 });
+    const budgets = await getBudgets();
+    return new Response(JSON.stringify(budgets), { status: 200 });
   } catch (error) {
-    console.error('Error fetching balance', error);
+    console.error('Error fetching budgets', error);
     return new Response(JSON.stringify({ error: 'Failed to fetch balance' }));
+  }
+}
+
+export async function PUT(req) {
+  try {
+    const body = await req.json();
+    const budgets = await updateBudgets(JSON.stringify(body));
+    return new Response(JSON.stringify(budgets), { status: 200 });
+  } catch (error) {
+    console.error('Error updating budgets', error);
+    return new Response(JSON.stringify({ error: 'Failed to update budgets' }));
   }
 }

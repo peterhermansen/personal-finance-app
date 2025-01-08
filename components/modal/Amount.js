@@ -1,7 +1,7 @@
 import styles from '@/styles/components/modal/Amount.module.css';
 import { useState, useEffect } from 'react';
 
-const Amount = ({ textObj }) => {
+const Amount = ({ textObj, formObj, setFormObj }) => {
   const [input, setInput] = useState('');
   const [isNumber, setIsNumber] = useState(true);
   const handleInputChange = (e) => setInput(e.target.value);
@@ -14,6 +14,11 @@ const Amount = ({ textObj }) => {
   useEffect(() => {
     setIsNumber(isNumeric(input));
   }, [input]);
+
+  useEffect(() => {
+    formObj.maximum = Number(input);
+    setFormObj(formObj);
+  }, [input, formObj, setFormObj]);
 
   return (
     <div className={styles.container}>

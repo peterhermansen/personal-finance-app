@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import DropdownRow from '../transactions/DropdownRow';
 import categoryUsed from '@/utils/categoryUsed';
 
-const Category = ({ budgets }) => {
-  const [category, setCategory] = useState('Entertainment');
+const Category = ({ budgets, formObj, setFormObj }) => {
+  const [category, setCategory] = useState(['Entertainment', false]);
+
   const [categoryList, setCategoryList] = useState([
     ['Entertainment', false],
     ['Bills', false],
@@ -39,6 +40,11 @@ const Category = ({ budgets }) => {
   useEffect(() => {
     setCategory(categoryList[0].slice(0, 1));
   }, [categoryList]);
+
+  useEffect(() => {
+    formObj.category = category[0];
+    setFormObj(formObj);
+  }, [category, formObj, setFormObj]);
 
   return (
     <div className={styles.container}>
