@@ -1,5 +1,30 @@
 .button {
   width: 100%;
   text-align: left;
+}
+
+.button-short {
   padding: 0.75rem 0;
+}
+
+.button-tall {
+  padding: 1rem 0;
+}
+
+.button-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.color {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 1rem;
 }
