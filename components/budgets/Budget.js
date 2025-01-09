@@ -51,7 +51,7 @@ const Budget = ({ budget, budgetObj }) => {
             ></div>
             <div className={styles['spent-text']}>
               <span className="text-5 gray">Spent</span>
-              <span className="text-4 bold">${spentBudget}</span>
+              <span className="text-4 bold">${formatVal(spentBudget)}</span>
             </div>
           </div>
 

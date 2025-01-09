@@ -8,8 +8,6 @@ const Bills = ({ bills }) => {
   const [filteredData, setFilteredData] = useState(bills.recurring);
   const [searchValue, setSearchValue] = useState('');
 
-  console.log(bills);
-
   const searchFilter = useCallback(() => {
     return filterSearch(searchValue, bills.recurring);
   }, [searchValue, bills.recurring]);

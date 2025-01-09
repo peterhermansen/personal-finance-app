@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.amount {
+  position: relative;
+}
+
+.input {
+  height: 2.8125rem;
+  width: 100%;
+  border: solid 1px #201f24;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem 0.75rem 2.2rem;
+}
+
+.input:focus {
+  outline: 1px solid #201f24;
+}
+
+.dollar {
+  position: absolute;
+  left: 1.25rem;
+  top: 0.75rem;
+}
+
+.warning {
+  margin-top: 0.5rem;
+}

@@ -9,10 +9,18 @@ import budgetData from '@/utils/budgetData';
 import Budget from '@/components/budgets/Budget';
 import { useState, useEffect } from 'react';
 import Loading from '@/components/Loading';
+import Modal from '@/components/modal/Modal';
 
 export default function BudgetsPage() {
   const { sidebarOpen, budgets, transactions } = useStateContext();
   const [loading, setLoading] = useState(true);
+
+  const [buttonClicked, setButtonClicked] = useState(true);
+  const [buttonSource, setButtonSource] = useState('Add Budget');
+  const handleButtonClick = (source) => {
+    setButtonClicked(true);
+    setButtonSource(source);
+  };
 
   useEffect(() => {
     if (transactions && budgets) setLoading(false);
@@ -26,10 +34,21 @@ export default function BudgetsPage() {
     <div
       className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
     >
+      {buttonClicked ? (
+        <Modal
+          buttonSource={buttonSource}
+          setButtonClicked={setButtonClicked}
+        />
+      ) : null}
       <div className="content">
         <div className="top">
           <h1 className="title text-1 bold">Budgets</h1>
-          <button className="btn-add text-4 bold">+ Add New Budget</button>
+          <button
+            className="btn-add text-4 bold"
+            onClick={() => handleButtonClick('Add Budget')}
+          >
+            + Add New Budget
+          </button>
         </div>
 
         <div className={styles.content}>
