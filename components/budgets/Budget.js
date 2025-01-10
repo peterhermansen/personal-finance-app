@@ -2,8 +2,21 @@ import styles from '@/styles/components/budgets/Budget.module.css';
 import Image from 'next/image';
 import formatVal from '@/utils/formatVal';
 import Latest from '@/components/budgets/Latest';
+import EditMenu from '@/components/general/EditMenu';
 
-const Budget = ({ budget, budgetObj }) => {
+const Budget = ({
+  budget,
+  budgetObj,
+  menuOpen,
+  setMenuOpen,
+  setButtonClicked,
+  setButtonSource,
+  setEditTarget,
+}) => {
+  const handleMenuClick = () => {
+    setMenuOpen(budget.category);
+  };
+
   const spentBudget = budgetObj.spentBudgets[budget.category];
   const percent = (spentBudget / budget.maximum) * 100;
   const remaining = budget.maximum - spentBudget;
@@ -17,14 +30,22 @@ const Budget = ({ budget, budgetObj }) => {
           ></div>
           <span className="text-2 bold">{budget.category}</span>
         </div>
-        <button>
+        <button onClick={handleMenuClick}>
           <Image
             src="/images/icon-ellipsis.svg"
-            alt="Pot Edit Button"
+            alt={budget.category}
             width="16"
             height="16"
           />
         </button>
+        {menuOpen === budget.category ? (
+          <EditMenu
+            setButtonClicked={setButtonClicked}
+            setButtonSource={setButtonSource}
+            setEditTarget={setEditTarget}
+            category={budget.category}
+          />
+        ) : null}
       </div>
 
       <div className={styles.bar}>
@@ -63,7 +84,7 @@ const Budget = ({ budget, budgetObj }) => {
             <div className={styles['spent-text']}>
               <span className="text-5 gray">Remaining</span>
               <span className="text-4 bold">
-                ${remaining > 0 ? remaining : 0}
+                ${formatVal(remaining > 0 ? remaining : 0)}
               </span>
             </div>
           </div>

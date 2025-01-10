@@ -6,7 +6,7 @@ import Category from './Category';
 import Amount from './Amount';
 import Theme from './Theme';
 
-const CreateEditMenu = ({ buttonSource, setButtonClicked }) => {
+const Modal = ({ buttonSource, setButtonClicked, editTarget }) => {
   const { budgets, setBudgets } = useStateContext();
   const [activeDropdown, setActiveDropdown] = useState('');
   const [formObj, setFormObj] = useState({
@@ -21,8 +21,18 @@ const CreateEditMenu = ({ buttonSource, setButtonClicked }) => {
   const handleFormSubmit = () => {
     if (formObj.category && !isNaN(formObj.maximum) && formObj.theme) {
       if (formObj.maximum > 0) {
-        budgets.push(formObj);
-        console.log(budgets);
+        if (buttonSource === 'Add Budget') {
+          budgets.push(formObj);
+        }
+        if (buttonSource === 'Edit Budget') {
+          const index = budgets.findIndex(
+            (item) => item.category === editTarget,
+          );
+          budgets[index] = formObj;
+        }
+
+        setButtonClicked(false);
+
         fetch('api/budgets', {
           method: 'PUT',
           headers: {
@@ -53,22 +63,29 @@ const CreateEditMenu = ({ buttonSource, setButtonClicked }) => {
       <div className={styles.container}>
         {header()}
         <span className="text-4 gray">{textObj.text}</span>
-        {buttonSource === 'Add Budget' ? (
+        {buttonSource === 'Add Budget' || buttonSource === 'Edit Budget' ? (
           <Category
             budgets={budgets}
             formObj={formObj}
             setFormObj={setFormObj}
             activeDropdown={activeDropdown}
             setActiveDropdown={setActiveDropdown}
+            editTarget={editTarget}
           />
         ) : null}
-        <Amount textObj={textObj} formObj={formObj} setFormObj={setFormObj} />
+        <Amount
+          textObj={textObj}
+          formObj={formObj}
+          setFormObj={setFormObj}
+          editTarget={editTarget}
+        />
         <Theme
           budgets={budgets}
           formObj={formObj}
           setFormObj={setFormObj}
           activeDropdown={activeDropdown}
           setActiveDropdown={setActiveDropdown}
+          editTarget={editTarget}
         />
         <button
           className={`text-4 bold ${styles.submit}`}
@@ -83,4 +100,4 @@ const CreateEditMenu = ({ buttonSource, setButtonClicked }) => {
   );
 };
 
-export default CreateEditMenu;
+export default Modal;

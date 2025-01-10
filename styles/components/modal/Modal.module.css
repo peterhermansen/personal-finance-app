@@ -1,7 +1,7 @@
 .container {
   background-color: white;
   border-radius: 0.75rem;
-  position: absolute;
+  position: fixed;
   z-index: 99999;
   top: 50%;
   left: 50%;
@@ -29,7 +29,7 @@
   justify-content: space-between;
 }
 
-.submit {
+div .submit {
   background-color: #201f24;
   color: white;
   height: 3.3125rem;

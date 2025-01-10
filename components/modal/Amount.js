@@ -1,7 +1,9 @@
 import styles from '@/styles/components/modal/Amount.module.css';
 import { useState, useEffect } from 'react';
+import { useStateContext } from '@/app/stateContext';
 
-const Amount = ({ textObj, formObj, setFormObj }) => {
+const Amount = ({ textObj, formObj, setFormObj, editTarget }) => {
+  const { budgets } = useStateContext();
   const [input, setInput] = useState('');
   const [isNumber, setIsNumber] = useState(true);
   const handleInputChange = (e) => setInput(e.target.value);
@@ -12,11 +14,20 @@ const Amount = ({ textObj, formObj, setFormObj }) => {
   };
 
   useEffect(() => {
+    if (editTarget) {
+      const indexBudget = budgets.findIndex(
+        (item) => item.category === editTarget,
+      );
+      const targetValue = budgets[indexBudget].maximum;
+      if (targetValue !== input) setInput(targetValue);
+    }
+  }, []);
+
+  useEffect(() => {
     setIsNumber(isNumeric(input));
   }, [input]);
 
   useEffect(() => {
-    console.log();
     formObj.maximum = Number(Number(input).toFixed(2));
     setFormObj(formObj);
   }, [input, formObj, setFormObj]);
