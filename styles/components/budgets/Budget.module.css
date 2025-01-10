@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.top {
+  position: relative;
+}
+
 .top-left {
   gap: 1rem;
 }

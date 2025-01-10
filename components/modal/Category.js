@@ -9,6 +9,7 @@ const Category = ({
   setFormObj,
   activeDropdown,
   setActiveDropdown,
+  editTarget,
 }) => {
   const [category, setCategory] = useState(['Entertainment', false]);
 
@@ -33,12 +34,23 @@ const Category = ({
 
   const updatedCategoryList = [...categoryList];
 
+  //If already used set to true
   updatedCategoryList.forEach((el, i, arr) => {
     arr[i][1] = categoryUsed(el[0], budgets);
   });
 
   // Sort by false to bottom of list
   updatedCategoryList.sort((a, b) => (a[1] === b[1] ? 0 : a[1] ? 1 : -1));
+
+  // Place edit target at top of array
+  if (editTarget) {
+    const index = updatedCategoryList.findIndex(
+      (item) => item[0] === editTarget,
+    );
+    updatedCategoryList[index][1] = false;
+    const [target] = updatedCategoryList.splice(index, 1);
+    updatedCategoryList.unshift(target);
+  }
 
   const arraysAreEqual = (arr1, arr2) =>
     JSON.stringify(arr1) === JSON.stringify(arr2);

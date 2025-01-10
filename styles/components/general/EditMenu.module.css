@@ -1,0 +1,16 @@
+.container {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  box-shadow: 0 0 1rem #88888880;
+  background-color: white;
+  border-radius: 0.5rem;
+  z-index: 9999;
+}
+
+.edit,
+.delete {
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+  text-align: left;
+}
