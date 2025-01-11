@@ -5,10 +5,28 @@ import { useStateContext } from '@/app/stateContext';
 import Pot from '@/components/pots/Pot';
 import { useState, useEffect } from 'react';
 import Loading from '@/components/Loading';
+import Modal from '@/components/modal/Modal';
+import Delete from '@/components/modal/Delete';
 
 export default function PotsPage() {
   const { sidebarOpen, pots } = useStateContext();
   const [loading, setLoading] = useState(true);
+
+  const [buttonClicked, setButtonClicked] = useState(false);
+  const [deleteClicked, setDeleteClicked] = useState(false);
+  const [buttonSource, setButtonSource] = useState('');
+  const [editTarget, setEditTarget] = useState('');
+  const [menuOpen, setMenuOpen] = useState('');
+
+  const handleButtonClick = () => {
+    setButtonClicked(true);
+    setButtonSource('Add Pot');
+  };
+
+  const handleExitClick = (e) => {
+    if (e.target.alt === menuOpen) setMenuOpen('');
+    else setMenuOpen(e.target.alt);
+  };
 
   useEffect(() => {
     if (pots) setLoading(false);
@@ -20,10 +38,29 @@ export default function PotsPage() {
     <div
       className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
     >
+      {buttonClicked ? (
+        <Modal
+          buttonSource={buttonSource}
+          setButtonClicked={setButtonClicked}
+          editTarget={editTarget}
+          setEditTarget={setEditTarget}
+        />
+      ) : null}
+
+      {deleteClicked ? (
+        <Delete
+          buttonSource={buttonSource}
+          editTarget={editTarget}
+          setEditTarget={setEditTarget}
+          setDeleteClicked={setDeleteClicked}
+        />
+      ) : null}
       <div className="content">
         <div className="top">
           <h1 className="title text-1 bold">Pots</h1>
-          <button className="btn-add text-4 bold">+ Add New Pot</button>
+          <button className="btn-add text-4 bold" onClick={handleButtonClick}>
+            + Add New Pot
+          </button>
         </div>
         <div className="grid grid--2-cols">
           {pots.map((el) => {

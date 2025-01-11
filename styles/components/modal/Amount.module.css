@@ -26,6 +26,11 @@
   top: 0.75rem;
 }
 
+.characters {
+  display: flex;
+  justify-content: space-between;
+}
+
 .warning {
   margin-top: 0.5rem;
 }

@@ -5,6 +5,7 @@ import modalText from '@/utils/modalText';
 import Category from './Category';
 import Amount from './Amount';
 import Theme from './Theme';
+import Name from './Name';
 
 const Modal = ({
   buttonSource,
@@ -12,17 +13,27 @@ const Modal = ({
   editTarget,
   setEditTarget,
 }) => {
-  const { budgets, setBudgets } = useStateContext();
+  const { budgets, setBudgets, pots, setPots } = useStateContext();
   const [activeDropdown, setActiveDropdown] = useState('');
-  const [formObj, setFormObj] = useState({
-    theme: '',
-    maximum: 0,
-    category: '',
-  });
+  const [formObj, setFormObj] = useState({});
 
   const textObj = modalText(buttonSource);
 
   const handleExitClick = () => setButtonClicked(false);
+
+  const fetchReq = (location, obj, setter) => {
+    fetch(`api/${location}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(obj),
+    })
+      .then((res) => res.json())
+      .then((data) => setter(data))
+      .catch((err) => console.error('Error updating budgets', err));
+  };
+
   const handleFormSubmit = () => {
     if (formObj.category && !isNaN(formObj.maximum) && formObj.theme) {
       if (formObj.maximum > 0) {
@@ -38,18 +49,30 @@ const Modal = ({
 
         setButtonClicked(false);
         setEditTarget('');
-
-        fetch('api/budgets', {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(budgets),
-        })
-          .then((res) => res.json())
-          .then((data) => setBudgets(data))
-          .catch((err) => console.error('Error updating budgets', err));
+        fetchReq('budgets', budgets, setBudgets);
       }
+    }
+
+    if (
+      formObj.name &&
+      formObj.name.length < 31 &&
+      !isNaN(formObj.target) &&
+      formObj.target > 0 &&
+      formObj.theme
+    ) {
+      if (buttonSource === 'Add Pot') {
+        formObj.total = 0;
+        pots.push(formObj);
+      }
+      if (buttonSource === 'Edit Pot') {
+        const index = pots.findIndex((item) => item.category === editTarget);
+        formObj.total = pots[index].total;
+        pots[index] = formObj;
+      }
+
+      setButtonClicked(false);
+      setEditTarget('');
+      fetchReq('pots', pots, setPots);
     }
   };
 
@@ -79,11 +102,19 @@ const Modal = ({
             editTarget={editTarget}
           />
         ) : null}
+        {buttonSource === 'Add Pot' || buttonSource === 'Edit Pot' ? (
+          <Name
+            formObj={formObj}
+            setFormObj={setFormObj}
+            editTarget={editTarget}
+          />
+        ) : null}
         <Amount
           textObj={textObj}
           formObj={formObj}
           setFormObj={setFormObj}
           editTarget={editTarget}
+          buttonSource={buttonSource}
         />
         <Theme
           budgets={budgets}
@@ -92,6 +123,7 @@ const Modal = ({
           activeDropdown={activeDropdown}
           setActiveDropdown={setActiveDropdown}
           editTarget={editTarget}
+          buttonSource={buttonSource}
         />
         <button
           className={`text-4 bold ${styles.submit}`}
