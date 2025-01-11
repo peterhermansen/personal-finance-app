@@ -35,3 +35,13 @@ div .submit {
   height: 3.3125rem;
   border-radius: 0.5rem;
 }
+
+.delete {
+  height: 3.3125rem;
+  background-color: #c94736;
+  border-radius: 0.5rem;
+}
+
+.delete:hover {
+  background-color: #c94736cc;
+}

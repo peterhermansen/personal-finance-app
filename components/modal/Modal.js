@@ -6,7 +6,12 @@ import Category from './Category';
 import Amount from './Amount';
 import Theme from './Theme';
 
-const Modal = ({ buttonSource, setButtonClicked, editTarget }) => {
+const Modal = ({
+  buttonSource,
+  setButtonClicked,
+  editTarget,
+  setEditTarget,
+}) => {
   const { budgets, setBudgets } = useStateContext();
   const [activeDropdown, setActiveDropdown] = useState('');
   const [formObj, setFormObj] = useState({
@@ -32,6 +37,7 @@ const Modal = ({ buttonSource, setButtonClicked, editTarget }) => {
         }
 
         setButtonClicked(false);
+        setEditTarget('');
 
         fetch('api/budgets', {
           method: 'PUT',
@@ -42,7 +48,7 @@ const Modal = ({ buttonSource, setButtonClicked, editTarget }) => {
         })
           .then((res) => res.json())
           .then((data) => setBudgets(data))
-          .catch((err) => console.error('Error fetching balance', err));
+          .catch((err) => console.error('Error updating budgets', err));
       }
     }
   };
