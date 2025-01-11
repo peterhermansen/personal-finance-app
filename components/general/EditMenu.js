@@ -5,10 +5,17 @@ const EditMenu = ({
   setButtonSource,
   setEditTarget,
   category,
+  setDeleteClicked,
 }) => {
   const handleEditClick = (target) => {
     setButtonClicked(true);
     setButtonSource('Edit Budget');
+    setEditTarget(target);
+  };
+
+  const handleDeleteClick = (target) => {
+    setDeleteClicked(true);
+    setButtonSource('budget');
     setEditTarget(target);
   };
 
@@ -18,7 +25,12 @@ const EditMenu = ({
         Edit Budget
       </button>
       <div className="divider"></div>
-      <button className={`${styles.delete} red`}>Delete Budget</button>
+      <button
+        className={`${styles.delete} red`}
+        onClick={() => handleDeleteClick(category)}
+      >
+        Delete Budget
+      </button>
     </div>
   );
 };

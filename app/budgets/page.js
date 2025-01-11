@@ -10,12 +10,14 @@ import Budget from '@/components/budgets/Budget';
 import { useState, useEffect } from 'react';
 import Loading from '@/components/Loading';
 import Modal from '@/components/modal/Modal';
+import Delete from '@/components/modal/Delete';
 
 export default function BudgetsPage() {
   const { sidebarOpen, budgets, transactions } = useStateContext();
   const [loading, setLoading] = useState(true);
 
   const [buttonClicked, setButtonClicked] = useState(false);
+  const [deleteClicked, setDeleteClicked] = useState(false);
   const [buttonSource, setButtonSource] = useState('');
   const [editTarget, setEditTarget] = useState('');
   const handleButtonClick = () => {
@@ -50,6 +52,15 @@ export default function BudgetsPage() {
           setEditTarget={setEditTarget}
         />
       ) : null}
+
+      {deleteClicked ? (
+        <Delete
+          buttonSource={buttonSource}
+          editTarget={editTarget}
+          setEditTarget={setEditTarget}
+          setDeleteClicked={setDeleteClicked}
+        />
+      ) : null}
       <div className="content">
         <div className="top">
           <h1 className="title text-1 bold">Budgets</h1>
@@ -78,6 +89,7 @@ export default function BudgetsPage() {
                   setButtonClicked={setButtonClicked}
                   setButtonSource={setButtonSource}
                   setEditTarget={setEditTarget}
+                  setDeleteClicked={setDeleteClicked}
                 />
               );
             })}

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import styles from '@/styles/components/transactions/TransactionRow.module.css';
 import formatVal from '@/utils/formatVal';
 import formatDate from '@/utils/formatDate';

@@ -12,6 +12,7 @@ const Budget = ({
   setButtonClicked,
   setButtonSource,
   setEditTarget,
+  setDeleteClicked,
 }) => {
   const handleMenuClick = () => {
     setMenuOpen(budget.category);
@@ -44,6 +45,7 @@ const Budget = ({
             setButtonSource={setButtonSource}
             setEditTarget={setEditTarget}
             category={budget.category}
+            setDeleteClicked={setDeleteClicked}
           />
         ) : null}
       </div>
