@@ -2,7 +2,7 @@ import styles from '@/styles/components/modal/Amount.module.css';
 import { useState, useEffect } from 'react';
 import { useStateContext } from '@/app/stateContext';
 
-const Amount = ({ textObj, formObj, setFormObj, editTarget }) => {
+const Amount = ({ textObj, formObj, setFormObj, editTarget, buttonSource }) => {
   const { budgets } = useStateContext();
   const [input, setInput] = useState('');
   const [isNumber, setIsNumber] = useState(true);
@@ -28,9 +28,12 @@ const Amount = ({ textObj, formObj, setFormObj, editTarget }) => {
   }, [input]);
 
   useEffect(() => {
-    formObj.maximum = Number(Number(input).toFixed(2));
+    if (buttonSource === 'Add Budget' || buttonSource === 'Edit Budget') {
+      formObj.maximum = Number(Number(input).toFixed(2));
+    } else formObj.target = Number(Number(input).toFixed(2));
+
     setFormObj(formObj);
-  }, [input, formObj, setFormObj]);
+  }, [input, formObj, setFormObj, buttonSource]);
 
   return (
     <div className={styles.container}>

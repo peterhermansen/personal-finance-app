@@ -10,8 +10,9 @@ const Theme = ({
   activeDropdown,
   setActiveDropdown,
   editTarget,
+  buttonSource,
 }) => {
-  const { budgets } = useStateContext();
+  const { budgets, pots } = useStateContext();
   const [theme, setTheme] = useState(['#277c78', 'Green']);
   const [themeList, setThemeList] = useState([
     ['#277C78', 'Green', false],
@@ -39,18 +40,18 @@ const Theme = ({
   const updatedThemeList = [...themeList];
 
   updatedThemeList.forEach((el, i, arr) => {
-    arr[i][2] = colorUsed(el[0], budgets);
+    if (buttonSource === 'Add Budget' || buttonSource === 'Edit Budget') {
+      arr[i][2] = colorUsed(el[0], budgets);
+    } else arr[i][2] = colorUsed(el[0], pots);
   });
 
-  // Sort by false to bottom of list
+  // Sort by true to bottom of list
   updatedThemeList.sort((a, b) => (a[2] === b[2] ? 0 : a[2] ? 1 : -1));
 
-  if (editTarget) {
-    const indexBudget = budgets.findIndex(
-      (item) => item.category === editTarget,
-    );
-    if (budgets[indexBudget]) {
-      const targetColor = budgets[indexBudget].theme;
+  const syncThemeList = (arr) => {
+    const index = arr.findIndex((item) => item.category === editTarget);
+    if (arr[index]) {
+      const targetColor = arr[index].theme;
       const indexColor = updatedThemeList.findIndex(
         (item) => item[0] === targetColor,
       );
@@ -58,6 +59,12 @@ const Theme = ({
       const [target] = updatedThemeList.splice(indexColor, 1);
       updatedThemeList.unshift(target);
     }
+  };
+
+  if (editTarget) {
+    if (buttonSource === 'Add Budget' || buttonSource === 'Edit Budget') {
+      syncThemeList(budgets);
+    } else syncThemeList(pots);
   }
 
   const arraysAreEqual = (arr1, arr2) =>
