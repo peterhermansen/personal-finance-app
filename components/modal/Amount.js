@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useStateContext } from '@/app/stateContext';
 
 const Amount = ({ textObj, formObj, setFormObj, editTarget, buttonSource }) => {
-  const { budgets } = useStateContext();
+  const { budgets, pots } = useStateContext();
   const [input, setInput] = useState('');
   const [isNumber, setIsNumber] = useState(true);
   const handleInputChange = (e) => setInput(e.target.value);
@@ -15,11 +15,18 @@ const Amount = ({ textObj, formObj, setFormObj, editTarget, buttonSource }) => {
 
   useEffect(() => {
     if (editTarget) {
-      const indexBudget = budgets.findIndex(
-        (item) => item.category === editTarget,
-      );
-      const targetValue = budgets[indexBudget].maximum;
-      if (targetValue !== input) setInput(targetValue);
+      if (buttonSource === 'Edit Budget') {
+        const indexBudget = budgets.findIndex(
+          (item) => item.category === editTarget,
+        );
+        const targetValue = budgets[indexBudget].maximum;
+        if (targetValue !== input) setInput(targetValue);
+      }
+      if (buttonSource === 'Edit Pot') {
+        const indexPot = pots.findIndex((item) => item.name === editTarget);
+        const targetValue = pots[indexPot].target;
+        if (targetValue !== input) setInput(targetValue);
+      }
     }
   }, []);
 

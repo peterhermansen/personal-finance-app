@@ -17,6 +17,8 @@ const Modal = ({
   const [activeDropdown, setActiveDropdown] = useState('');
   const [formObj, setFormObj] = useState({});
 
+  console.log(editTarget);
+
   const textObj = modalText(buttonSource);
 
   const handleExitClick = () => setButtonClicked(false);
@@ -65,7 +67,7 @@ const Modal = ({
         pots.push(formObj);
       }
       if (buttonSource === 'Edit Pot') {
-        const index = pots.findIndex((item) => item.category === editTarget);
+        const index = pots.findIndex((item) => item.name === editTarget);
         formObj.total = pots[index].total;
         pots[index] = formObj;
       }

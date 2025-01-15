@@ -8,6 +8,10 @@
   gap: 2rem;
 }
 
+.top {
+  position: relative;
+}
+
 .top,
 .top-left,
 .target,
