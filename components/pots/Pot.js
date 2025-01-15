@@ -1,9 +1,22 @@
 import styles from '@/styles/components/pots/Pot.module.css';
 import Image from 'next/image';
 import formatVal from '@/utils/formatVal';
+import EditMenu from '../general/EditMenu';
 
-const Pot = ({ pot }) => {
+const Pot = ({
+  pot,
+  menuOpen,
+  setMenuOpen,
+  setButtonClicked,
+  setButtonSource,
+  setEditTarget,
+  setDeleteClicked,
+}) => {
   const percent = (pot.total / pot.target) * 100;
+
+  const handleMenuClick = () => {
+    setMenuOpen(pot.name);
+  };
 
   return (
     <div className={styles.container}>
@@ -15,14 +28,23 @@ const Pot = ({ pot }) => {
           ></div>
           <span className="text-2 bold">{pot.name}</span>
         </div>
-        <button>
+        <button onClick={handleMenuClick}>
           <Image
             src="/images/icon-ellipsis.svg"
-            alt="Pot Edit Button"
+            alt={pot.name}
             width="16"
             height="16"
           />
         </button>
+        {menuOpen === pot.name ? (
+          <EditMenu
+            setButtonClicked={setButtonClicked}
+            setButtonSource={setButtonSource}
+            setEditTarget={setEditTarget}
+            name={pot.name}
+            setDeleteClicked={setDeleteClicked}
+          />
+        ) : null}
       </div>
 
       <div className={styles.details}>

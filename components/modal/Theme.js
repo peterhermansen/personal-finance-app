@@ -49,7 +49,14 @@ const Theme = ({
   updatedThemeList.sort((a, b) => (a[2] === b[2] ? 0 : a[2] ? 1 : -1));
 
   const syncThemeList = (arr) => {
-    const index = arr.findIndex((item) => item.category === editTarget);
+    let index;
+    if (buttonSource === 'Edit Budget') {
+      index = arr.findIndex((item) => item.category === editTarget);
+    }
+    if (buttonSource === 'Edit Pot') {
+      index = arr.findIndex((item) => item.name === editTarget);
+    }
+
     if (arr[index]) {
       const targetColor = arr[index].theme;
       const indexColor = updatedThemeList.findIndex(

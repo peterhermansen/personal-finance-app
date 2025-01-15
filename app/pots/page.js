@@ -37,6 +37,7 @@ export default function PotsPage() {
   return (
     <div
       className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
+      onClick={handleExitClick}
     >
       {buttonClicked ? (
         <Modal
@@ -64,7 +65,18 @@ export default function PotsPage() {
         </div>
         <div className="grid grid--2-cols">
           {pots.map((el) => {
-            return <Pot pot={el} key={el.name} />;
+            return (
+              <Pot
+                pot={el}
+                key={el.name}
+                menuOpen={menuOpen}
+                setMenuOpen={setMenuOpen}
+                setButtonClicked={setButtonClicked}
+                setButtonSource={setButtonSource}
+                setEditTarget={setEditTarget}
+                setDeleteClicked={setDeleteClicked}
+              />
+            );
           })}
         </div>
       </div>

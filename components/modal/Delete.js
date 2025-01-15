@@ -7,28 +7,38 @@ const Delete = ({
   setEditTarget,
   setDeleteClicked,
 }) => {
-  const { budgets, setBudgets } = useStateContext();
+  const { budgets, setBudgets, pots, setPots } = useStateContext();
 
   const handleExitClick = () => setDeleteClicked(false);
+
+  const fetchReq = (location, obj, setter) => {
+    setDeleteClicked(false);
+    setEditTarget('');
+
+    fetch(`api/${location}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(obj),
+    })
+      .then((res) => res.json())
+      .then((data) => setter(data))
+      .catch((err) => console.error(`Error updating ${buttonSource}`, err));
+  };
 
   const handleDelete = () => {
     if (buttonSource === 'budget') {
       const index = budgets.findIndex((item) => item.category === editTarget);
       budgets.splice(index, 1);
 
-      setDeleteClicked(false);
-      setEditTarget('');
+      fetchReq(`${buttonSource}s`, budgets, setBudgets);
+    }
+    if (buttonSource === 'pot') {
+      const index = pots.findIndex((item) => item.name === editTarget);
+      pots.splice(index, 1);
 
-      fetch('api/budgets', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(budgets),
-      })
-        .then((res) => res.json())
-        .then((data) => setBudgets(data))
-        .catch((err) => console.error('Error deleting budget', err));
+      fetchReq(`${buttonSource}s`, pots, setPots);
     }
   };
 
