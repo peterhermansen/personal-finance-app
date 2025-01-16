@@ -6,6 +6,7 @@ import Category from './Category';
 import Amount from './Amount';
 import Theme from './Theme';
 import Name from './Name';
+import fetchReq from '@/utils/fetchReq';
 
 const Modal = ({
   buttonSource,
@@ -23,17 +24,10 @@ const Modal = ({
 
   const handleExitClick = () => setButtonClicked(false);
 
-  const fetchReq = (location, obj, setter) => {
-    fetch(`api/${location}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(obj),
-    })
-      .then((res) => res.json())
-      .then((data) => setter(data))
-      .catch((err) => console.error('Error updating budgets', err));
+  const request = (location, obj, setter) => {
+    setButtonClicked(false);
+    setEditTarget('');
+    fetchReq(location, obj, setter);
   };
 
   const handleFormSubmit = () => {
@@ -49,9 +43,7 @@ const Modal = ({
           budgets[index] = formObj;
         }
 
-        setButtonClicked(false);
-        setEditTarget('');
-        fetchReq('budgets', budgets, setBudgets);
+        request('budgets', budgets, setBudgets);
       }
     }
 
@@ -72,9 +64,7 @@ const Modal = ({
         pots[index] = formObj;
       }
 
-      setButtonClicked(false);
-      setEditTarget('');
-      fetchReq('pots', pots, setPots);
+      request('pots', pots, setPots);
     }
   };
 

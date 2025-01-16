@@ -11,11 +11,18 @@ const Pot = ({
   setButtonSource,
   setEditTarget,
   setDeleteClicked,
+  setAddClicked,
 }) => {
   const percent = (pot.total / pot.target) * 100;
 
   const handleMenuClick = () => {
     setMenuOpen(pot.name);
+  };
+
+  const handleAddClick = (addOrWithdraw) => {
+    setAddClicked(true);
+    setEditTarget(pot.name);
+    setButtonSource(addOrWithdraw);
   };
 
   return (
@@ -68,8 +75,18 @@ const Pot = ({
         </div>
       </div>
       <div className={styles.buttons}>
-        <button className={`${styles.button} text-4 bold`}>+ Add Money</button>
-        <button className={`${styles.button} text-4 bold`}>Withdraw</button>
+        <button
+          className={`${styles.button} text-4 bold`}
+          onClick={() => handleAddClick('add')}
+        >
+          + Add Money
+        </button>
+        <button
+          className={`${styles.button} text-4 bold`}
+          onClick={() => handleAddClick('withdraw')}
+        >
+          Withdraw
+        </button>
       </div>
     </div>
   );

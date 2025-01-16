@@ -1,5 +1,6 @@
 import { useStateContext } from '@/app/stateContext';
 import styles from '@/styles/components/modal/Modal.module.css';
+import fetchReq from '@/utils/fetchReq';
 
 const Delete = ({
   buttonSource,
@@ -11,20 +12,11 @@ const Delete = ({
 
   const handleExitClick = () => setDeleteClicked(false);
 
-  const fetchReq = (location, obj, setter) => {
+  const request = (location, obj, setter) => {
     setDeleteClicked(false);
     setEditTarget('');
 
-    fetch(`api/${location}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(obj),
-    })
-      .then((res) => res.json())
-      .then((data) => setter(data))
-      .catch((err) => console.error(`Error updating ${buttonSource}`, err));
+    fetchReq(location, obj, setter);
   };
 
   const handleDelete = () => {
@@ -32,13 +24,13 @@ const Delete = ({
       const index = budgets.findIndex((item) => item.category === editTarget);
       budgets.splice(index, 1);
 
-      fetchReq(`${buttonSource}s`, budgets, setBudgets);
+      request(`${buttonSource}s`, budgets, setBudgets);
     }
     if (buttonSource === 'pot') {
       const index = pots.findIndex((item) => item.name === editTarget);
       pots.splice(index, 1);
 
-      fetchReq(`${buttonSource}s`, pots, setPots);
+      request(`${buttonSource}s`, pots, setPots);
     }
   };
 
