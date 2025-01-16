@@ -39,7 +39,7 @@ const Amount = ({
 
   useEffect(() => {
     setIsNumber(isNumeric(input));
-    if (isNumber) setAmount(Number(input));
+    if (isNumber && setAmount) setAmount(Number(input));
   }, [input, isNumber, setAmount]);
 
   useEffect(() => {
