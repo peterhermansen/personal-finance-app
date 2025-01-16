@@ -45,3 +45,37 @@ div .submit {
 .delete:hover {
   background-color: #c94736cc;
 }
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bar {
+  position: relative;
+}
+
+.bar-bg {
+  background-color: #f8f4f0;
+  height: 0.5rem;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.bar-left {
+  background-color: #201f24;
+  height: 0.5rem;
+  border-radius: 1rem 0 0 1rem;
+  position: absolute;
+  top: 0;
+  border-right: #f8f4f0 2px solid;
+  z-index: 9999;
+}
+
+.bar-right {
+  height: 0.5rem;
+  border-radius: 1rem;
+  position: absolute;
+  top: 0;
+}

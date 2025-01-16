@@ -2,7 +2,14 @@ import styles from '@/styles/components/modal/Amount.module.css';
 import { useState, useEffect } from 'react';
 import { useStateContext } from '@/app/stateContext';
 
-const Amount = ({ textObj, formObj, setFormObj, editTarget, buttonSource }) => {
+const Amount = ({
+  textObj,
+  formObj,
+  setFormObj,
+  editTarget,
+  buttonSource,
+  setAmount,
+}) => {
   const { budgets, pots } = useStateContext();
   const [input, setInput] = useState('');
   const [isNumber, setIsNumber] = useState(true);
@@ -32,14 +39,20 @@ const Amount = ({ textObj, formObj, setFormObj, editTarget, buttonSource }) => {
 
   useEffect(() => {
     setIsNumber(isNumeric(input));
-  }, [input]);
+    if (isNumber) setAmount(Number(input));
+  }, [input, isNumber, setAmount]);
 
   useEffect(() => {
-    if (buttonSource === 'Add Budget' || buttonSource === 'Edit Budget') {
-      formObj.maximum = Number(Number(input).toFixed(2));
-    } else formObj.target = Number(Number(input).toFixed(2));
+    if (buttonSource) {
+      if (buttonSource === 'Add Budget' || buttonSource === 'Edit Budget') {
+        formObj.maximum = Number(Number(input).toFixed(2));
+      }
+      if (buttonSource === 'Add Pot' || buttonSource === 'Edit Pot') {
+        formObj.target = Number(Number(input).toFixed(2));
+      }
 
-    setFormObj(formObj);
+      setFormObj(formObj);
+    }
   }, [input, formObj, setFormObj, buttonSource]);
 
   return (

@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import Loading from '@/components/Loading';
 import Modal from '@/components/modal/Modal';
 import Delete from '@/components/modal/Delete';
+import AddWithdraw from '@/components/modal/AddWithdraw';
 
 export default function PotsPage() {
   const { sidebarOpen, pots } = useStateContext();
@@ -14,6 +15,7 @@ export default function PotsPage() {
 
   const [buttonClicked, setButtonClicked] = useState(false);
   const [deleteClicked, setDeleteClicked] = useState(false);
+  const [addClicked, setAddClicked] = useState(false);
   const [buttonSource, setButtonSource] = useState('');
   const [editTarget, setEditTarget] = useState('');
   const [menuOpen, setMenuOpen] = useState('');
@@ -48,12 +50,21 @@ export default function PotsPage() {
         />
       ) : null}
 
+      {addClicked ? (
+        <AddWithdraw
+          buttonSource={buttonSource}
+          setAddClicked={setAddClicked}
+          editTarget={editTarget}
+          setEditTarget={setEditTarget}
+        />
+      ) : null}
+
       {deleteClicked ? (
         <Delete
           buttonSource={buttonSource}
+          setDeleteClicked={setDeleteClicked}
           editTarget={editTarget}
           setEditTarget={setEditTarget}
-          setDeleteClicked={setDeleteClicked}
         />
       ) : null}
       <div className="content">
@@ -75,6 +86,7 @@ export default function PotsPage() {
                 setButtonSource={setButtonSource}
                 setEditTarget={setEditTarget}
                 setDeleteClicked={setDeleteClicked}
+                setAddClicked={setAddClicked}
               />
             );
           })}
