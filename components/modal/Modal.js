@@ -18,8 +18,6 @@ const Modal = ({
   const [activeDropdown, setActiveDropdown] = useState('');
   const [formObj, setFormObj] = useState({});
 
-  console.log(editTarget);
-
   const textObj = modalText(buttonSource);
 
   const handleExitClick = () => setButtonClicked(false);

@@ -21,6 +21,7 @@ const Budget = ({
   const spentBudget = budgetObj.spentBudgets[budget.category];
   const percent = (spentBudget / budget.maximum) * 100;
   const remaining = budget.maximum - spentBudget;
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>

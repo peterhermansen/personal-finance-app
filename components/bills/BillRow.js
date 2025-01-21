@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import styles from '@/styles/components/bills/BillRow.module.css';
 import ordinalDay from '@/utils/ordinalDay';
 import formatVal from '@/utils/formatVal';
