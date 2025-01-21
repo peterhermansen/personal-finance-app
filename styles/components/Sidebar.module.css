@@ -71,6 +71,12 @@
   height: 3.5rem;
   border-radius: 0 0.75rem 0.75rem 0;
   position: relative;
+  transition: 0.3s all ease-in-out;
+}
+
+.btn .icon {
+  fill: #b3b3b3;
+  transition: none;
 }
 
 .sidebar--open .nav nav .btn,
@@ -93,18 +99,20 @@
   left: 0;
 }
 
-button .icon,
-button .name {
+.btn--inactive .icon,
+.btn--inactive .name {
   color: #b3b3b3;
   fill: #b3b3b3;
 }
 
 .btn--active {
   background-color: white;
+  transition: 0.5s all ease-in-out;
 }
 
 .btn--active .icon {
   fill: #277c78;
+  transition: none;
 }
 
 .btn--active .name {
@@ -121,7 +129,6 @@ button .name {
   font-weight: 500;
   justify-self: start;
   position: absolute;
-  /* width: 100%; */
   left: 4.5rem;
   white-space: nowrap;
 }
