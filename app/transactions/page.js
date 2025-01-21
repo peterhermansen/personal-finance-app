@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 import Loading from '@/components/Loading';
 
 export default function TransactionsPage() {
-  const { sidebarOpen, transactions } = useStateContext();
+  const { sidebarOpen, transactions, windowSize } = useStateContext();
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState();
@@ -26,7 +26,7 @@ export default function TransactionsPage() {
 
   return (
     <div
-      className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
+      className={`container ${windowSize.width > 1200 ? (sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed') : ''}`}
     >
       <div className="top">
         <h1 className="title text-1 bold">Transactions</h1>

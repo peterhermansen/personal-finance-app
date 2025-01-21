@@ -13,7 +13,7 @@ import Modal from '@/components/modal/Modal';
 import Delete from '@/components/modal/Delete';
 
 export default function BudgetsPage() {
-  const { sidebarOpen, budgets, transactions } = useStateContext();
+  const { sidebarOpen, budgets, transactions, windowSize } = useStateContext();
   const [loading, setLoading] = useState(true);
 
   const [buttonClicked, setButtonClicked] = useState(false);
@@ -41,7 +41,7 @@ export default function BudgetsPage() {
 
   return (
     <div
-      className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
+      className={`container ${windowSize.width > 1200 ? (sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed') : ''}`}
       onClick={handleExitClick}
     >
       {buttonClicked ? (

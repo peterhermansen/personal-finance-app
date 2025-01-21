@@ -6,6 +6,13 @@
   z-index: 9999;
 }
 
+.nav {
+  height: calc(100vh - 8.625rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .sidebar--open {
   width: 18.75rem;
 }
@@ -46,13 +53,6 @@
 
 .logo-visible {
   transition: all 0.8s ease-in-out;
-}
-
-.nav {
-  height: calc(100vh - 8.625rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .minimize {

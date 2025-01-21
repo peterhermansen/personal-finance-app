@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import Loading from '@/components/Loading';
 
 export default function OverviewPage() {
-  const { sidebarOpen, balance, budgets, pots, transactions } =
+  const { sidebarOpen, balance, budgets, pots, transactions, windowSize } =
     useStateContext();
   const [loading, setLoading] = useState(true);
 
@@ -23,7 +23,7 @@ export default function OverviewPage() {
 
   return (
     <div
-      className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
+      className={`container ${windowSize.width > 1200 ? (sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed') : ''}`}
     >
       <div className="top">
         <h1 className="title text-1 bold">Overview</h1>

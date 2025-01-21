@@ -10,7 +10,7 @@ import Delete from '@/components/modal/Delete';
 import AddWithdraw from '@/components/modal/AddWithdraw';
 
 export default function PotsPage() {
-  const { sidebarOpen, pots } = useStateContext();
+  const { sidebarOpen, pots, windowSize } = useStateContext();
   const [loading, setLoading] = useState(true);
 
   const [buttonClicked, setButtonClicked] = useState(false);
@@ -38,7 +38,7 @@ export default function PotsPage() {
 
   return (
     <div
-      className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
+      className={`container ${windowSize.width > 1200 ? (sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed') : ''}`}
       onClick={handleExitClick}
     >
       {buttonClicked ? (

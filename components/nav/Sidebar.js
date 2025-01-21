@@ -1,5 +1,5 @@
 'use client';
-import styles from '@/styles/components/Sidebar.module.css';
+import styles from '@/styles/components/nav/Sidebar.module.css';
 import Image from 'next/image';
 import { useStateContext } from '@/app/stateContext.js';
 import { useState, useEffect } from 'react';
@@ -153,7 +153,7 @@ const Sidebar = () => {
           </Link>
         </nav>
 
-        <div className={styles.minimize}>
+        <div className={`${styles.minimize}`}>
           <button
             className={`${styles.btn} ${styles['btn--inactive']}`}
             onClick={() => handleMinimizeClick()}

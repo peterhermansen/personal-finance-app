@@ -159,6 +159,10 @@ button {
 /******************************/
 /* GENRAL CLASSES */
 /******************************/
+.container {
+  padding: 2rem 2.5rem;
+}
+
 .container--sidebar-open {
   padding: 2.5rem 2.5rem 2.5rem 21.25rem;
 }

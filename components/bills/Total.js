@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import styles from '@/styles/components/bills/Total.module.css';
 import formatVal from '@/utils/formatVal';
 
