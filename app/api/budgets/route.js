@@ -6,7 +6,7 @@ export async function GET() {
     return new Response(JSON.stringify(budgets), { status: 200 });
   } catch (error) {
     console.error('Error fetching budgets', error);
-    return new Response(JSON.stringify({ error: 'Failed to fetch balance' }));
+    return new Response(JSON.stringify({ error: 'Failed to fetch budgets' }));
   }
 }
 

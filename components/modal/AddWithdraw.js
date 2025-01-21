@@ -13,7 +13,7 @@ const AddWithdraw = ({
 }) => {
   const { pots, setPots } = useStateContext();
   const [amount, setAmount] = useState(0);
-  const handleExitClick = () => setAddClicked(false);
+
   const add = buttonSource === 'add' ? true : false;
 
   const potIndex = pots.findIndex((item) => item.name === editTarget);
@@ -52,6 +52,8 @@ const AddWithdraw = ({
       request('pots', pots, setPots);
     }
   };
+
+  const handleExitClick = () => setAddClicked(false);
 
   const header = () => {
     return (
