@@ -4,6 +4,9 @@
   padding: 0.75rem 2.5rem 0.75rem 1.25rem;
   border-radius: 0.5rem;
   border: 1px solid #98908b;
+  transition: all 0.05s ease-in-out;
+  max-width: 20rem;
+  min-width: 12.125rem;
 }
 
 .search:focus {
@@ -24,4 +27,29 @@
   top: 50%;
   left: 18.5rem;
   transform: translate(-50%, -50%);
+}
+
+@media (max-width: 944px) {
+  .search {
+    width: 100%;
+  }
+
+  .search-button {
+    right: -0.3rem;
+    left: auto;
+  }
+}
+
+@media (max-width: 816px) {
+  .search-button {
+    left: 18.5rem;
+    right: auto;
+  }
+}
+
+@media (max-width: 575px) {
+  .search-button {
+    right: -0.5rem;
+    left: auto;
+  }
 }

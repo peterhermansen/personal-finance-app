@@ -1,7 +1,7 @@
 'use client';
 import '@/styles/globals.css';
 import '@/styles/queries.css';
-import styles from '@/styles/components/transactions/TransactionsPage.module.css';
+import styles from '@/styles/components/transactions/page.module.css';
 import { useStateContext } from '@/app/stateContext';
 import TransactionsRow from '@/components/transactions/TransactionRow';
 import TransactionFilters from '@/components/transactions/TransactionFilters';
@@ -40,7 +40,7 @@ export default function TransactionsPage() {
         />
         <div>
           <div
-            className={`${styles['transaction-headers']} grid-transaction-columns gray text-5`}
+            className={`${styles['transaction-headers']} ${styles.layout} gray text-5`}
           >
             <span>Recipient / Sender</span>
             <span>Category</span>
@@ -58,6 +58,7 @@ export default function TransactionsPage() {
                 i={i}
                 totalRows={filteredData.length}
                 key={el.date}
+                display={windowSize.width < 944 ? 'overview' : null}
               />
             );
           })}

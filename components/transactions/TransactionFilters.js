@@ -11,6 +11,7 @@ const TransactionFilters = ({ data, setFilteredData }) => {
   const [searchValue, setSearchValue] = useState('');
   const [sortValue, setSortValue] = useState('Latest');
   const [categoryValue, setCategoryValue] = useState('All Transactions');
+  const [currentDropdown, setCurrentDropdown] = useState('');
 
   const searchFilter = useCallback(() => {
     return filterSearch(searchValue, data);
@@ -49,11 +50,18 @@ const TransactionFilters = ({ data, setFilteredData }) => {
   return (
     <div className={styles.filters}>
       <SearchFilter setSearchValue={setSearchValue} />
-      <SortFilter sortValue={sortValue} setSortValue={setSortValue} />
+      <SortFilter
+        sortValue={sortValue}
+        setSortValue={setSortValue}
+        currentDropdown={currentDropdown}
+        setCurrentDropdown={setCurrentDropdown}
+      />
       <CategoryFilter
         data={data}
         categoryValue={categoryValue}
         setCategoryValue={setCategoryValue}
+        currentDropdown={currentDropdown}
+        setCurrentDropdown={setCurrentDropdown}
       />
     </div>
   );

@@ -1,6 +1,8 @@
 import styles from '@/styles/components/transactions/Pagination.module.css';
+import { useStateContext } from '@/app/stateContext';
 
 const PageNav = ({ filteredData, page, setPage }) => {
+  const { windowSize } = useStateContext();
   const numPages = Math.ceil(filteredData.length / 10);
 
   const handlePrevClick = () => {
@@ -26,7 +28,7 @@ const PageNav = ({ filteredData, page, setPage }) => {
         >
           <path d="m5.14656 10.8535-5.000005-4.99997c-.046488-.04643-.0833676-.10158-.1085298-.16228-.0251623-.06069-.03811269-.12576-.0381127-.19147 0-.0657.0129504-.13077.0381126-.19147.0251623-.06069.0620419-.11584.1085299-.16228l4.999995-4.999997c.06993-.0700052.15906-.117689.2561-.13701419.09704-.01932521.19764-.0094229.28905.02845329.09141.0378763.16953.1020229.22447.1843199.05493.082297.08421.179044.08414.277991v10.000017c.00007.0989-.02921.1957-.08414.278-.05494.0823-.13306.1464-.22447.1843s-.19201.0478-.28905.0284c-.09704-.0193-.18617-.067-.25609-.137z" />
         </svg>
-        <span>Prev</span>
+        {windowSize.width > 593 ? <span>Prev</span> : null}
       </button>
 
       <div className={styles.pages}>
@@ -43,7 +45,7 @@ const PageNav = ({ filteredData, page, setPage }) => {
       </div>
 
       <button className={styles['side-btn']} onClick={handleNextClick}>
-        <span>Next</span>
+        {windowSize.width > 593 ? <span>Next</span> : null}
         <svg
           height="11"
           viewBox="0 0 6 11"

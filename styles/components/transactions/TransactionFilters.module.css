@@ -4,3 +4,10 @@
   gap: 1.5rem;
   align-items: center;
 }
+
+@media (max-width: 816px) {
+  .filters {
+    grid-template-columns: 1fr 3rem 3rem;
+    gap: 0;
+  }
+}

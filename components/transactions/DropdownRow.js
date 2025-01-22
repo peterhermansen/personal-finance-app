@@ -8,12 +8,12 @@ const DropdownRow = ({
   color,
   isUsed,
   setter,
-  setButtonClicked,
+  setCurrentDropdown,
   size,
 }) => {
   const handleButtonClick = () => {
     color ? setter([color, name]) : setter(name);
-    setButtonClicked();
+    setCurrentDropdown('');
   };
 
   let colorMatch = false;

@@ -11,7 +11,7 @@ const TransactionsRow = ({ data, i, totalRows, display, budget }) => {
       <li
         className={`
           ${styles['transaction-row']} 
-          ${display !== 'overview' ? 'grid-transaction-columns' : null} 
+          ${display !== 'overview' ? styles.layout : null} 
           ${display !== 'overview' && i < totalRows ? 'pd-btm-sm' : null}
           ${display !== 'overview' && i > 0 ? ' pd-top-sm' : null}`}
       >
