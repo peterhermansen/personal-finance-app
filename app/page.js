@@ -1,6 +1,7 @@
 'use client';
 import '@/styles/globals.css';
 import '@/styles/queries.css';
+import styles from '@/styles/components/overview/page.module.css';
 import SummaryOverview from '@/components/overview/SummaryOverview';
 import PotsOverview from '@/components/overview/PotsOverview';
 import TransactionsOverview from '@/components/overview/TransactionsOverview';
@@ -29,7 +30,7 @@ export default function OverviewPage() {
         <h1 className="title text-1 bold">Overview</h1>
       </div>
 
-      <div className="summaries">
+      <div className={styles.summaries}>
         <SummaryOverview
           header="Current Balance"
           value={balance.current}
@@ -43,7 +44,7 @@ export default function OverviewPage() {
         />
       </div>
 
-      <div className="content grid grid-overview">
+      <div className={styles.layout}>
         <div>
           <PotsOverview data={pots} />
           <TransactionsOverview data={transactions} display="overview" />
