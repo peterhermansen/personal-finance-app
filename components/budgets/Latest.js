@@ -12,6 +12,7 @@ const Latest = ({ category, transactions }) => {
         display="budgets"
       />
       <ul>
+        <div className="divider-dark"></div>
         {transactions[category].slice(0, 3).map((el, i) => {
           return (
             <TransactionsRow
@@ -24,6 +25,7 @@ const Latest = ({ category, transactions }) => {
             />
           );
         })}
+        <div className="divider-dark"></div>
       </ul>
     </div>
   );

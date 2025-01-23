@@ -61,7 +61,7 @@ export default function BudgetsPage() {
           setDeleteClicked={setDeleteClicked}
         />
       ) : null}
-      <div className="content">
+      <div>
         <div className="top">
           <h1 className="title text-1 bold">Budgets</h1>
           <button className="btn-add text-4 bold" onClick={handleButtonClick}>
