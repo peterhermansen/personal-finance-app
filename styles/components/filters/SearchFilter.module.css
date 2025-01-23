@@ -33,9 +33,11 @@
   .search {
     width: 100%;
   }
+}
 
+@media (max-width: 926px) {
   .search-button {
-    right: -0.3rem;
+    right: -0.5rem;
     left: auto;
   }
 }
@@ -47,7 +49,7 @@
   }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 559px) {
   .search-button {
     right: -0.5rem;
     left: auto;

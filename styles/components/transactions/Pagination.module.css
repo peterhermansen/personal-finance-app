@@ -1,6 +1,7 @@
 .pages-div {
   display: grid;
   grid-template-columns: 5.875rem 1fr 5.875rem;
+  margin-top: 1.5rem;
 }
 
 .pages-div * {

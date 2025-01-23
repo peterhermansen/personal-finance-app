@@ -2,6 +2,8 @@
   display: flex;
   list-style: none;
   justify-content: space-between;
+  align-items: center;
+  height: 4.5rem;
 }
 
 .transaction-name {

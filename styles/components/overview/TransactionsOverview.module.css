@@ -1,10 +1,9 @@
 .transactions {
   background-color: white;
-  height: 32.4375rem;
   border-radius: 0.75rem;
   padding: 2rem;
 }
 
-.transaction-rows {
-  margin-top: 2rem;
+.header {
+  margin-bottom: 2rem;
 }

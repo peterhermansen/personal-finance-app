@@ -46,6 +46,10 @@
   font-weight: 700;
 }
 
+.chart {
+  justify-self: center;
+}
+
 @media (max-width: 1200px) {
   .chart {
     display: flex;
