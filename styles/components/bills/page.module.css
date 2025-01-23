@@ -3,14 +3,30 @@
   grid-template-columns: 21.0625rem 1fr;
   gap: 1.5rem;
 }
-.left {
+.summary {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
-.right {
+.bills {
   width: 100%;
   background-color: white;
   padding: 2rem;
   border-radius: 0.75rem;
+}
+
+@media (max-width: 1000px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 670px) {
+  .summary {
+    flex-direction: column;
+  }
 }

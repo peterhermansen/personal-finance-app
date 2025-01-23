@@ -3,10 +3,12 @@ import SearchFilter from '../filters/SearchFilter';
 import { useState, useEffect, useCallback } from 'react';
 import filterSearch from '@/utils/filterSearch';
 import BillRow from './BillRow';
+import { useStateContext } from '@/app/stateContext';
 
 const Bills = ({ bills }) => {
   const [filteredData, setFilteredData] = useState(bills.recurring);
   const [searchValue, setSearchValue] = useState('');
+  const { windowSize } = useStateContext();
 
   const searchFilter = useCallback(() => {
     return filterSearch(searchValue, bills.recurring);
@@ -25,7 +27,7 @@ const Bills = ({ bills }) => {
       <div>
         <div className={`${styles.headers} text-5 gray`}>
           <span>Bill Title</span>
-          <span>Due Date</span>
+          {windowSize.width > 750 ? <span>Due Date</span> : null}
           <span className={styles['headers-amount']}>Amount</span>
         </div>
         <div className="divider"></div>

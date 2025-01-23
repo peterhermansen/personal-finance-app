@@ -4,6 +4,13 @@
   align-items: center;
   padding: 1.25rem 0.75rem;
 }
+
+@media (max-width: 750px) {
+  .bill-row {
+    grid-template-columns: 4fr 1fr;
+  }
+}
+
 .bill-name {
   display: flex;
   align-items: center;
@@ -19,4 +26,10 @@
 }
 .amount {
   justify-self: end;
+}
+
+.bill-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
