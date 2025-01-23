@@ -8,6 +8,7 @@ import Loading from '@/components/Loading';
 import Modal from '@/components/modal/Modal';
 import Delete from '@/components/modal/Delete';
 import AddWithdraw from '@/components/modal/AddWithdraw';
+import styles from '@/styles/components/pots/page.module.css';
 
 export default function PotsPage() {
   const { sidebarOpen, pots, windowSize } = useStateContext();
@@ -74,7 +75,7 @@ export default function PotsPage() {
             + Add New Pot
           </button>
         </div>
-        <div className="grid grid--2-cols">
+        <div className={styles.layout}>
           {pots.map((el) => {
             return (
               <Pot
