@@ -11,9 +11,7 @@ const TransactionsRow = ({ data, i, totalRows, display, budget }) => {
       <li
         className={`
           ${styles['transaction-row']} 
-          ${display !== 'overview' ? 'grid-transaction-columns' : null} 
-          ${display !== 'overview' && i < totalRows ? 'pd-btm-sm' : null}
-          ${display !== 'overview' && i > 0 ? ' pd-top-sm' : null}`}
+          ${display !== 'overview' ? styles.layout : null} `}
       >
         <div className={styles['transaction-name']}>
           <img
@@ -54,9 +52,7 @@ const TransactionsRow = ({ data, i, totalRows, display, budget }) => {
         )}
       </li>
       {i < totalRows - 1 ? (
-        <div
-          className={`${budget ? 'divider-dark' : 'divider'} ${display === 'overview' && !budget ? 'mrg-btm-sm mrg-top-sm' : null} ${budget ? 'mrg-top-tiny mrg-btm-tiny' : null}`}
-        ></div>
+        <div className={`${budget ? 'divider-dark' : 'divider'}`}></div>
       ) : null}
     </>
   );

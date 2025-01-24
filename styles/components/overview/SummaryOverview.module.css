@@ -26,3 +26,6 @@
 div .value-light {
   color: white;
 }
+
+@media (max-width: 768px) {
+}

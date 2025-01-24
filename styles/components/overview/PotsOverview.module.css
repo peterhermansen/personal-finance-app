@@ -1,6 +1,6 @@
 .pots {
   background-color: white;
-  height: 13.625rem;
+  /* height: 13.625rem; */
   border-radius: 0.75rem;
   padding: 2rem;
   margin-bottom: 1.5rem;
@@ -10,6 +10,12 @@
   display: flex;
   margin-top: 1.25rem;
   gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .pots-summary {
+    flex-direction: column;
+  }
 }
 
 .pots-total {

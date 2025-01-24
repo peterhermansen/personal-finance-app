@@ -4,9 +4,16 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   width: 100%;
-  min-width: 65.75rem;
+  min-width: 392px;
+}
+
+.layout,
+div .layout {
+  display: grid;
+  grid-template-columns: 1fr 7.5rem 7.5rem 12.5rem;
+  gap: 2rem;
+  align-items: center;
 }
 
 .transaction-headers {
@@ -16,5 +23,11 @@
 
 .transaction-list {
   padding: 0 1rem;
-  height: 44.625rem;
+}
+
+@media (max-width: 943px) {
+  .layout,
+  div .layout {
+    display: none;
+  }
 }

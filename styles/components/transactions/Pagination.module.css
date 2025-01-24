@@ -1,6 +1,7 @@
 .pages-div {
   display: grid;
   grid-template-columns: 5.875rem 1fr 5.875rem;
+  margin-top: 1.5rem;
 }
 
 .pages-div * {
@@ -12,7 +13,7 @@
 }
 
 .side-btn {
-  width: 5.875rem;
+  /* width: 5.875rem; */
   height: 2.5rem;
   border: 1px solid #888888;
   border-radius: 0.5rem;
@@ -53,4 +54,11 @@
 .page--active:focus {
   background-color: black;
   color: white;
+}
+
+@media (max-width: 593px) {
+  .pages-div {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+  }
 }

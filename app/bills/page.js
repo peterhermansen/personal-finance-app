@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import Loading from '@/components/Loading';
 
 export default function BillsPage() {
-  const { sidebarOpen, transactions } = useStateContext();
+  const { sidebarOpen, transactions, windowSize } = useStateContext();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,20 +24,20 @@ export default function BillsPage() {
 
   return (
     <div
-      className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
+      className={`container ${windowSize.width > 1200 ? (sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed') : ''}`}
     >
-      <div className="content">
+      <div>
         <div className="top">
           <h1 className="title text-1 bold">Recurring Bills</h1>
         </div>
 
         <div className={styles.content}>
-          <div className={styles.left}>
+          <div className={styles.summary}>
             <Total bills={bills} />
             <Summary bills={bills} />
           </div>
 
-          <div className={styles.right}>
+          <div className={styles.bills}>
             <Bills bills={bills} />
           </div>
         </div>

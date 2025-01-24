@@ -1,6 +1,7 @@
 'use client';
 import '@/styles/globals.css';
 import '@/styles/queries.css';
+import styles from '@/styles/components/overview/page.module.css';
 import SummaryOverview from '@/components/overview/SummaryOverview';
 import PotsOverview from '@/components/overview/PotsOverview';
 import TransactionsOverview from '@/components/overview/TransactionsOverview';
@@ -11,7 +12,7 @@ import { useState, useEffect } from 'react';
 import Loading from '@/components/Loading';
 
 export default function OverviewPage() {
-  const { sidebarOpen, balance, budgets, pots, transactions } =
+  const { sidebarOpen, balance, budgets, pots, transactions, windowSize } =
     useStateContext();
   const [loading, setLoading] = useState(true);
 
@@ -23,13 +24,13 @@ export default function OverviewPage() {
 
   return (
     <div
-      className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
+      className={`container ${windowSize.width > 1200 ? (sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed') : ''}`}
     >
       <div className="top">
         <h1 className="title text-1 bold">Overview</h1>
       </div>
 
-      <div className="summaries">
+      <div className={styles.summaries}>
         <SummaryOverview
           header="Current Balance"
           value={balance.current}
@@ -43,7 +44,7 @@ export default function OverviewPage() {
         />
       </div>
 
-      <div className="content grid grid-overview">
+      <div className={styles.layout}>
         <div>
           <PotsOverview data={pots} />
           <TransactionsOverview data={transactions} display="overview" />

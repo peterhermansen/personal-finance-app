@@ -1,6 +1,5 @@
 .budgets {
   background-color: white;
-  height: 25.625rem;
   padding: 2rem;
   border-radius: 0.75rem;
   margin-bottom: 1.5rem;
@@ -8,7 +7,6 @@
 
 .content {
   margin-top: 1.25rem;
-  height: 18.875rem;
   display: grid;
   grid-template-columns: 1fr 6.3125rem;
   align-items: center;
@@ -46,4 +44,29 @@
 
 .budget-value span {
   font-weight: 700;
+}
+
+.chart {
+  justify-self: center;
+}
+
+@media (max-width: 1200px) {
+  .chart {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    width: 100%;
+  }
 }

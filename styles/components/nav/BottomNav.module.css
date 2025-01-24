@@ -1,0 +1,103 @@
+.navbar {
+  height: 4.625rem;
+  width: 100%;
+  background-color: #201f24;
+  position: fixed;
+  border-radius: 0.5rem 0.5rem 0 0;
+  z-index: 9999;
+  padding: 0.5rem 2.5rem 0 2.5rem;
+  bottom: 0;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  position: relative;
+  transition: 0.3s all ease-in-out;
+  width: 8rem;
+  height: 4.125rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 0.5rem 0 0.75rem 0;
+}
+
+.btn .icon {
+  fill: #b3b3b3;
+  transition: none;
+  height: 1.5rem;
+}
+
+.btn--active::before {
+  content: '';
+  background-color: #277c78;
+  width: 8rem;
+  height: 5px;
+  position: absolute;
+  bottom: 0;
+}
+
+.btn--inactive .icon,
+.btn--inactive .name {
+  color: #b3b3b3;
+  fill: #b3b3b3;
+}
+
+.btn--active {
+  background-color: white;
+  transition: 0.5s all ease-in-out;
+}
+
+.btn--active .icon {
+  fill: #277c78;
+  transition: none;
+}
+
+.btn--active .name {
+  color: #201f24;
+}
+
+.btn--inactive:hover .icon,
+.btn--inactive:hover .name {
+  color: white;
+  fill: white;
+}
+
+button .name {
+  text-decoration: none;
+}
+
+button .name:visited {
+  text-decoration: none;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+button .hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .btn {
+    width: 4.5rem;
+    height: 2.75rem;
+  }
+
+  .btn--active::before {
+    width: 4.5rem;
+  }
+
+  .navbar {
+    height: 3.25rem;
+    padding: 0.5rem 1rem 0 1rem;
+  }
+}

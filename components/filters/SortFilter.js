@@ -1,9 +1,14 @@
-import styles from '@/styles/components/filters/Dropdown.module.css';
+import styles from '@/styles/components/filters/TransactionDropdown.module.css';
 import Image from 'next/image';
 import DropdownRow from '../transactions/DropdownRow';
-import { useState } from 'react';
+import { useStateContext } from '@/app/stateContext';
 
-const SortFilter = ({ sortValue, setSortValue }) => {
+const SortFilter = ({
+  sortValue,
+  setSortValue,
+  currentDropdown,
+  setCurrentDropdown,
+}) => {
   const sortList = [
     'Latest',
     'Oldest',
@@ -12,30 +17,46 @@ const SortFilter = ({ sortValue, setSortValue }) => {
     'Highest',
     'Lowest',
   ];
-
-  const [buttonClicked, setButtonClicked] = useState(false);
-  const handleButtonClick = () => setButtonClicked(!buttonClicked);
+  const { windowSize } = useStateContext();
+  const handleButtonClick = () => {
+    if (currentDropdown === 'sort') setCurrentDropdown('');
+    else setCurrentDropdown('sort');
+  };
 
   return (
-    <div className={styles['dropdown-div']}>
-      <span className="text-4 gray">Sort by</span>
+    <div className={styles['dropdown-div-sort']}>
+      {windowSize.width > 816 ? (
+        <span className="text-4 gray">Sort by</span>
+      ) : null}
       <div className={styles.dropdown}>
         <button
           className={`${styles['dropdown-button']} ${styles['dropdown-button-sort']} 
-          ${buttonClicked ? styles['dropdown-button--active'] : null}`}
+          ${currentDropdown === 'sort' ? styles['dropdown-button--active'] : null}`}
           onClick={handleButtonClick}
         >
-          <span>{sortValue}</span>
-          <Image
-            src="/images/icon-caret-down.svg"
-            alt="Finance Logo"
-            width="12"
-            height="12"
-            className={styles.arrow}
-          />
+          {windowSize.width > 816 ? (
+            <>
+              <span>{sortValue}</span>
+              <Image
+                src="/images/icon-caret-down.svg"
+                alt="Dropdown Arrow"
+                width="12"
+                height="12"
+                className={styles.arrow}
+              />
+            </>
+          ) : (
+            <Image
+              src="/images/icon-sort-mobile.svg"
+              alt="Sort"
+              width="20"
+              height="20"
+              className={styles.arrow}
+            />
+          )}
         </button>
         <ul
-          className={`${styles['dropdown-menu']} ${styles['dropdown-menu-sort']} ${buttonClicked ? styles['dropdown-menu--open'] : styles['dropdown-menu--closed']}`}
+          className={`${styles['dropdown-menu']} ${styles['dropdown-menu-sort']} ${currentDropdown === 'sort' ? styles['dropdown-menu--open'] : styles['dropdown-menu--closed']}`}
         >
           {sortList.map((el, i, arr) => {
             return (
@@ -46,7 +67,7 @@ const SortFilter = ({ sortValue, setSortValue }) => {
                 arr={arr}
                 value={sortValue}
                 setter={setSortValue}
-                setButtonClicked={setButtonClicked}
+                setCurrentDropdown={setCurrentDropdown}
               />
             );
           })}

@@ -1,7 +1,7 @@
 'use client';
 import '@/styles/globals.css';
 import '@/styles/queries.css';
-import styles from '@/styles/components/transactions/TransactionsPage.module.css';
+import styles from '@/styles/components/transactions/page.module.css';
 import { useStateContext } from '@/app/stateContext';
 import TransactionsRow from '@/components/transactions/TransactionRow';
 import TransactionFilters from '@/components/transactions/TransactionFilters';
@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 import Loading from '@/components/Loading';
 
 export default function TransactionsPage() {
-  const { sidebarOpen, transactions } = useStateContext();
+  const { sidebarOpen, transactions, windowSize } = useStateContext();
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState();
@@ -26,7 +26,7 @@ export default function TransactionsPage() {
 
   return (
     <div
-      className={`container ${sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed'}`}
+      className={`container ${windowSize.width > 1200 ? (sidebarOpen ? 'container--sidebar-open' : 'container--sidebar-closed') : ''}`}
     >
       <div className="top">
         <h1 className="title text-1 bold">Transactions</h1>
@@ -40,7 +40,7 @@ export default function TransactionsPage() {
         />
         <div>
           <div
-            className={`${styles['transaction-headers']} grid-transaction-columns gray text-5`}
+            className={`${styles['transaction-headers']} ${styles.layout} gray text-5`}
           >
             <span>Recipient / Sender</span>
             <span>Category</span>
@@ -58,6 +58,7 @@ export default function TransactionsPage() {
                 i={i}
                 totalRows={filteredData.length}
                 key={el.date}
+                display={windowSize.width < 944 ? 'overview' : null}
               />
             );
           })}

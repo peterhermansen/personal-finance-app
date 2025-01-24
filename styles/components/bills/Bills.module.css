@@ -16,6 +16,12 @@ div .headers {
   grid-template-columns: 1fr 7.5rem 6.25rem;
 }
 
+@media (max-width: 750px) {
+  div .headers {
+    grid-template-columns: 1fr 6.25rem;
+  }
+}
+
 .headers-amount {
   justify-self: end;
 }

@@ -16,8 +16,32 @@
 }
 
 .chart {
-  width: 15rem;
-  height: 15rem;
+  padding: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .chart {
+    padding: 1rem 3rem 1rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .summary {
+    flex-direction: column;
+  }
+
+  .chart {
+    padding: 0 0 1rem 0;
+  }
 }
 
 .details {

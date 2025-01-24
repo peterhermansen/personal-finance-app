@@ -2,6 +2,8 @@
   display: flex;
   list-style: none;
   justify-content: space-between;
+  align-items: center;
+  height: 4.5rem;
 }
 
 .transaction-name {
@@ -23,4 +25,12 @@
 
 .avatar {
   border-radius: 100%;
+}
+
+.layout,
+div .layout {
+  display: grid;
+  grid-template-columns: 1fr 7.5rem 7.5rem 12.5rem;
+  gap: 2rem;
+  align-items: center;
 }

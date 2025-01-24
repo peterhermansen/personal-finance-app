@@ -4,6 +4,8 @@
   padding: 0.75rem 2.5rem 0.75rem 1.25rem;
   border-radius: 0.5rem;
   border: 1px solid #98908b;
+  max-width: 20rem;
+  min-width: 12.125rem;
 }
 
 .search:focus {
@@ -12,6 +14,7 @@
 
 .search-div {
   position: relative;
+  display: inline-block;
 }
 
 .search-icon {
@@ -22,6 +25,29 @@
   padding: 0.5rem;
   position: absolute;
   top: 50%;
-  left: 18.5rem;
+  right: -0.5rem;
   transform: translate(-50%, -50%);
+}
+
+@media (max-width: 944px) {
+  .search {
+    width: 100%;
+  }
+
+  .search-div {
+    display: flex;
+  }
+}
+
+@media (max-width: 816px) {
+  .search-div {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 559px) {
+  .search-button {
+    right: -0.5rem;
+    left: auto;
+  }
 }

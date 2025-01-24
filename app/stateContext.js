@@ -11,6 +11,28 @@ export const StateProvider = ({ children }) => {
   const [budgets, setBudgets] = useState(null);
   const [pots, setPots] = useState(null);
   const [transactions, setTransactions] = useState(null);
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    // Set initial size
+    handleResize();
+
+    // Listen to window resize events
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener when component unmounts
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     fetch('api/transactions')
@@ -44,6 +66,7 @@ export const StateProvider = ({ children }) => {
         setPots,
         transactions,
         setTransactions,
+        windowSize,
       }}
     >
       {children}

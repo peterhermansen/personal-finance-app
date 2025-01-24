@@ -12,3 +12,22 @@
   flex-direction: column;
   gap: 0.6875rem;
 }
+
+@media (max-width: 1000px) {
+  .total {
+    height: 12.75rem;
+  }
+}
+
+@media (max-width: 670px) {
+  .total {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 10rem;
+  }
+
+  .total-text {
+    margin-top: 0;
+  }
+}
