@@ -10,6 +10,7 @@
 }
 .bills {
   width: 100%;
+  min-width: 34.8125rem;
   background-color: white;
   padding: 2rem;
   border-radius: 0.75rem;
@@ -22,6 +23,10 @@
 
   .summary {
     flex-direction: row;
+  }
+
+  .bills {
+    min-width: 0;
   }
 }
 
