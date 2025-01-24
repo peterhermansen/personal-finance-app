@@ -1,6 +1,5 @@
 'use client';
 import '@/styles/globals.css';
-import '@/styles/queries.css';
 import styles from '@/styles/components/bills/page.module.css';
 import { useStateContext } from '@/app/stateContext';
 import billData from '@/utils/billData';

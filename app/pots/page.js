@@ -1,6 +1,5 @@
 'use client';
 import '@/styles/globals.css';
-import '@/styles/queries.css';
 import { useStateContext } from '@/app/stateContext';
 import Pot from '@/components/pots/Pot';
 import { useState, useEffect } from 'react';

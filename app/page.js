@@ -1,6 +1,5 @@
 'use client';
 import '@/styles/globals.css';
-import '@/styles/queries.css';
 import styles from '@/styles/components/overview/page.module.css';
 import SummaryOverview from '@/components/overview/SummaryOverview';
 import PotsOverview from '@/components/overview/PotsOverview';
