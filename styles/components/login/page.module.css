@@ -1,0 +1,114 @@
+.container {
+  padding: 1.25rem 0 1.25rem 1.25rem;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 560px 1fr;
+  align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.left {
+  justify-self: center;
+  position: relative;
+}
+
+.right {
+  justify-self: center;
+}
+
+@media (min-width: 1600px) {
+  .container {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14.5rem;
+  }
+}
+
+.image {
+  border-radius: 0.75rem;
+  max-height: 96vh;
+  min-height: 900px;
+}
+
+.logo {
+  position: absolute;
+  left: 2.5rem;
+  top: 2.5rem;
+}
+
+.text {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 26rem;
+}
+
+.login {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.input {
+  width: 31rem;
+  height: 2.8125rem;
+  border-radius: 0.5rem;
+  border: 1px solid #b3b3b3;
+  padding: 0.75rem 1.25rem;
+}
+
+.input:focus {
+  outline: 1px solid black;
+}
+
+.button {
+  padding: 0.2rem;
+  position: absolute;
+  top: 2.1rem;
+  right: 0.8rem;
+}
+
+.submit {
+  background-color: #201f24;
+  border-radius: 0.5rem;
+  height: 3.3125rem;
+  color: white;
+  align-items: center;
+}
+
+.switch {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.switch-btn {
+  text-decoration: underline;
+}
+
+.pass-info {
+  text-align: end;
+}

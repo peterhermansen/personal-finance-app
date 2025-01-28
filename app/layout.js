@@ -1,10 +1,14 @@
 'use client';
 import { StateProvider } from './stateContext';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Sidebar from '@/components/nav/Sidebar';
 import BottomNav from '@/components/nav/BottomNav';
 
 export default function RootLayout({ children }) {
+  const path = usePathname();
+  console.log(path);
+
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined,
@@ -37,7 +41,11 @@ export default function RootLayout({ children }) {
       <body>
         <StateProvider>
           <div>
-            {windowSize.width > 1200 ? <Sidebar /> : <BottomNav />}
+            {path === '/login' ? null : windowSize.width > 1200 ? (
+              <Sidebar />
+            ) : (
+              <BottomNav />
+            )}
             {children}
           </div>
         </StateProvider>
