@@ -57,7 +57,7 @@ export default function LoginPage() {
         email: emailValue,
         hash: hash,
       });
-
+      console.log(res);
       if (res.error === 'Email exists') setEmailExists(true);
     }
   };
