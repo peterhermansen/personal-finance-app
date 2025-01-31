@@ -4,6 +4,8 @@ import styles from '@/styles/components/login/page.module.css';
 import { useStateContext } from '@/app/stateContext';
 import { useState, useEffect } from 'react';
 import validator from 'email-validator';
+import generateHash from '@/utils/generateHash';
+import fetchReq from '@/utils/fetchReq';
 
 export default function LoginPage() {
   const { windowSize } = useStateContext();
@@ -12,7 +14,9 @@ export default function LoginPage() {
   const [emailValue, setEmailValue] = useState('');
   const [nameValue, setNameValue] = useState('');
   const [passValue, setPassValue] = useState('');
-  const [validEmail, setValidEmail] = useState(true);
+  const [validEmail, setValidEmail] = useState(false);
+  const [validPass, setValidPass] = useState(false);
+  const [emailExists, setEmailExists] = useState(false);
   const txt = display === 'login' ? 'Login' : 'Sign Up';
 
   const handlePassClick = () => {
@@ -25,6 +29,7 @@ export default function LoginPage() {
 
   const handleEmailChange = (e) => {
     setEmailValue(e.target.value);
+    setEmailExists(false);
   };
 
   const handleNameChange = (e) => {
@@ -40,8 +45,26 @@ export default function LoginPage() {
   }, [emailValue]);
 
   useEffect(() => {
-    setValidEmail(validator.validate(emailValue));
+    passValue.length > 7 ? setValidPass(true) : setValidPass(false);
   }, [passValue]);
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    if (validEmail && validPass && nameValue.length > 0) {
+      const hash = await generateHash(passValue);
+      const res = await fetchReq('POST', 'login', {
+        name: nameValue,
+        email: emailValue,
+        hash: hash,
+      });
+
+      if (res.error === 'Email exists') setEmailExists(true);
+    }
+  };
+
+  const handleLogin = () => {
+    console.log('login');
+  };
 
   return (
     <div className={styles.container}>
@@ -90,9 +113,15 @@ export default function LoginPage() {
                 className={styles.input}
                 value={emailValue}
                 onChange={handleEmailChange}
+                type="email"
               ></input>
-              {display !== 'login' && !validEmail ? (
+              {display !== 'login' && !validEmail && emailValue.length > 0 ? (
                 <span className="text-5 red">Enter a valid email</span>
+              ) : null}
+              {emailExists ? (
+                <span className="text-5 red">
+                  Account with that email already exists.
+                </span>
               ) : null}
             </div>
 
@@ -120,7 +149,13 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <button className={`${styles.submit} text-4 bold`}>{txt}</button>
+          <button
+            className={`${styles.submit} text-4 bold`}
+            onClick={display === 'login' ? handleLogin : handleSignup}
+            type="button"
+          >
+            {txt}
+          </button>
 
           <div className={styles.switch}>
             <span className="text-4 dark-gray">
