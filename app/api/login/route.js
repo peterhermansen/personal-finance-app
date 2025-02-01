@@ -18,11 +18,16 @@ export async function POST(req) {
       expiresIn: '30d',
     });
 
+    let expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 29);
+
     cookieStore.set({
       name: 'token',
       value: token,
       httpOnly: true,
       path: '/',
+      expires: expirationDate,
+      secure: true,
     });
 
     return new Response(JSON.stringify('User created successfully'));
