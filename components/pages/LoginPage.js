@@ -26,7 +26,7 @@ export default function LoginPage({ validCookie }) {
   useLayoutEffect(() => {
     validCookie ? router.push('/') : null;
     validCookie ? null : setLoading(false);
-  });
+  }, [validCookie, router]);
 
   const handlePassClick = () => {
     setDisplayPass(!displayPass);
@@ -76,7 +76,7 @@ export default function LoginPage({ validCookie }) {
     console.log('login');
   };
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading validCookie={validCookie} />;
 
   return (
     <div className={styles.container}>

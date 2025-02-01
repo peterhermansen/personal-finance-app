@@ -40,7 +40,7 @@ export default function PotsPage({ validCookie }) {
     if (pots && validCookie) setLoading(false);
   }, [pots, validCookie]);
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading validCookie={validCookie} />;
 
   return (
     <div

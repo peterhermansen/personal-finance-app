@@ -7,11 +7,10 @@ import BottomNav from '@/components/nav/BottomNav';
 
 export default function RootLayout({ children }) {
   const path = usePathname();
-  console.log(path);
 
   const [windowSize, setWindowSize] = useState({
-    width: undefined,
-    height: undefined,
+    width: window.innerWidth,
+    height: window.innerHeight,
   });
 
   useEffect(() => {

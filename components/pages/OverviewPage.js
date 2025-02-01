@@ -26,7 +26,7 @@ export default function OverviewPage({ validCookie }) {
       setLoading(false);
   }, [balance, budgets, pots, transactions, validCookie]);
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading validCookie={validCookie} />;
 
   return (
     <div

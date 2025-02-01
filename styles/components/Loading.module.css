@@ -4,3 +4,7 @@
   width: 100vw;
   z-index: 99999999;
 }
+
+.full {
+  background-color: #f8f4f0;
+}

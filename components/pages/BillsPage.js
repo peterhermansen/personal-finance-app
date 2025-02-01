@@ -23,7 +23,7 @@ export default function BillsPage({ validCookie }) {
     if (transactions && validCookie) setLoading(false);
   }, [transactions, validCookie]);
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading validCookie={validCookie} />;
 
   const bills = billData(transactions);
 

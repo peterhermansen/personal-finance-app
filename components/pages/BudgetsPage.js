@@ -41,7 +41,7 @@ export default function BudgetsPage({ validCookie }) {
     if (transactions && budgets && validCookie) setLoading(false);
   }, [transactions, budgets, validCookie]);
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading validCookie={validCookie} />;
 
   const budgetObj = budgetData(budgets, transactions);
 

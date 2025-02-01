@@ -27,7 +27,7 @@ export default function TransactionsPage({ validCookie }) {
     }
   }, [transactions, validCookie]);
 
-  if (loading) if (loading) return <Loading />;
+  if (loading) if (loading) return <Loading validCookie={validCookie} />;
 
   return (
     <div
