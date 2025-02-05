@@ -1,7 +1,8 @@
-import { createUser } from '@/lib/db';
+import { createUser, getUser, updateUser } from '@/lib/db';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import { cookies } from 'next/headers';
+const argon2 = require('argon2');
 
 dotenv.config();
 
@@ -10,7 +11,20 @@ export async function POST(req) {
 
   try {
     const body = await req.json();
-    await createUser(body);
+    let res;
+    console.log('tedafs');
+
+    if (body.name) await createUser(body);
+    else res = await getUser(body);
+    console.log('test');
+    if (!res.rows[0]) throw new Error('Incorrect Password');
+    const hash = res.rows[0].password_hash;
+    console.log(hash);
+    const match = await argon2.verify(hash, body.pass);
+    if (!match) {
+      throw new Error('Incorrect Password');
+    }
+
     const payload = {
       email: body.email,
     };
@@ -29,12 +43,13 @@ export async function POST(req) {
       expires: expirationDate,
       secure: true,
     });
-
+    if (!body.name)
+      return new Response(JSON.stringify('Logged in successfully'));
     return new Response(JSON.stringify('User created successfully'));
   } catch (error) {
-    console.error('Error creating user', error);
+    console.error('ERROR', error.message);
     if (error.code === '23505')
       return new Response(JSON.stringify({ error: 'Email exists' }));
-    return new Response(JSON.stringify({ error: 'Error creating account' }));
+    return new Response(JSON.stringify({ error: error.message }));
   }
 }

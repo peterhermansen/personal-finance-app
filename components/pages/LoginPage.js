@@ -19,6 +19,7 @@ export default function LoginPage({ validCookie }) {
   const [validEmail, setValidEmail] = useState(false);
   const [validPass, setValidPass] = useState(false);
   const [emailExists, setEmailExists] = useState(false);
+  const [wrongLogin, setWrongLogin] = useState(false);
   const [loading, setLoading] = useState(true);
   const txt = display === 'login' ? 'Login' : 'Sign Up';
   const router = useRouter();
@@ -72,8 +73,17 @@ export default function LoginPage({ validCookie }) {
     }
   };
 
-  const handleLogin = () => {
-    console.log('login');
+  const handleLogin = async (e) => {
+    setWrongLogin(false);
+    e.preventDefault();
+    if (validEmail) {
+      const res = await fetchReq('POST', 'login', {
+        email: emailValue,
+        pass: passValue,
+      });
+      if (res === 'Logged in successfully') router.push('/');
+      if (res.error === 'Incorrect Password') setWrongLogin(true);
+    }
   };
 
   if (loading) return <Loading validCookie={validCookie} />;
@@ -158,6 +168,9 @@ export default function LoginPage({ validCookie }) {
                   Passwords must be at least 8 characters
                 </span>
               )}
+              {wrongLogin ? (
+                <span className="text-5 red">Wrong email or password</span>
+              ) : null}
             </div>
           </div>
 
