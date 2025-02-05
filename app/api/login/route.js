@@ -12,7 +12,6 @@ export async function POST(req) {
   try {
     const body = await req.json();
     let res;
-    console.log('tedafs');
 
     if (body.name) await createUser(body);
     else {

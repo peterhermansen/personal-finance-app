@@ -6,7 +6,10 @@ dotenv.config();
 
 export default async function verifyToken() {
   const cookieStore = await cookies();
-  const token = cookieStore.get('token').value;
+  let token;
+  if (cookieStore.get('token')) {
+    token = cookieStore.get('token').value;
+  }
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);

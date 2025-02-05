@@ -15,6 +15,7 @@ export const StateProvider = ({ children }) => {
     width: undefined,
     height: undefined,
   });
+  const [forceReload, setForceReload] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -51,7 +52,7 @@ export const StateProvider = ({ children }) => {
       .then((res) => res.json())
       .then((data) => setPots(data))
       .catch((err) => console.error('Error fetching pots', err));
-  }, []);
+  }, [forceReload]);
 
   return (
     <StateContext.Provider
@@ -67,6 +68,7 @@ export const StateProvider = ({ children }) => {
         transactions,
         setTransactions,
         windowSize,
+        setForceReload,
       }}
     >
       {children}

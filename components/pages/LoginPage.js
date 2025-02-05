@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 import Loading from '../Loading';
 
 export default function LoginPage({ validCookie }) {
-  const { windowSize } = useStateContext();
+  const { windowSize, setForceReload } = useStateContext();
   const [display, setDisplay] = useState('login');
   const [displayPass, setDisplayPass] = useState(false);
   const [emailValue, setEmailValue] = useState('');
@@ -68,7 +68,11 @@ export default function LoginPage({ validCookie }) {
         hash: hash,
       });
       console.log(res);
-      if (res === 'User created successfully') router.push('/');
+      if (res === 'User created successfully') {
+        setForceReload(true);
+        router.push('/');
+      }
+
       if (res.error === 'Email exists') setEmailExists(true);
     }
   };
