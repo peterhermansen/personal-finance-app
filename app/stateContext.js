@@ -38,19 +38,19 @@ export const StateProvider = ({ children }) => {
     fetch('api/transactions')
       .then((res) => res.json())
       .then((data) => setTransactions(data))
-      .catch((err) => console.error('Error fetching balance', err));
+      .catch((err) => console.error('Error fetching transactions', err));
     fetch('api/balance')
       .then((res) => res.json())
       .then((data) => setBalance(data))
-      .catch((err) => console.error('Error fetching balance', err));
+      .catch((err) => console.error('Error fetching balances', err));
     fetch('api/budgets')
       .then((res) => res.json())
       .then((data) => setBudgets(data))
-      .catch((err) => console.error('Error fetching balance', err));
+      .catch((err) => console.error('Error fetching budgets', err));
     fetch('api/pots')
       .then((res) => res.json())
       .then((data) => setPots(data))
-      .catch((err) => console.error('Error fetching balance', err));
+      .catch((err) => console.error('Error fetching pots', err));
   }, []);
 
   return (

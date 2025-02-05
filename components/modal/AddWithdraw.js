@@ -41,7 +41,7 @@ const AddWithdraw = ({
   const request = (location, obj, setter) => {
     setAddClicked(false);
     setEditTarget('');
-    fetchReq(location, obj, setter);
+    fetchReq('PUT', location, obj, setter);
   };
 
   const handleConfirm = () => {

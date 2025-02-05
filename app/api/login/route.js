@@ -1,4 +1,4 @@
-import { createUser, getUser, updateUser } from '@/lib/db';
+import { createUser, getUser } from '@/lib/db';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import { cookies } from 'next/headers';
@@ -15,14 +15,14 @@ export async function POST(req) {
     console.log('tedafs');
 
     if (body.name) await createUser(body);
-    else res = await getUser(body);
-    console.log('test');
-    if (!res.rows[0]) throw new Error('Incorrect Password');
-    const hash = res.rows[0].password_hash;
-    console.log(hash);
-    const match = await argon2.verify(hash, body.pass);
-    if (!match) {
-      throw new Error('Incorrect Password');
+    else {
+      res = await getUser(body);
+      if (!res.rows[0]) throw new Error('Incorrect Password');
+      const hash = res.rows[0].password_hash;
+      const match = await argon2.verify(hash, body.pass);
+      if (!match) {
+        throw new Error('Incorrect Password');
+      }
     }
 
     const payload = {

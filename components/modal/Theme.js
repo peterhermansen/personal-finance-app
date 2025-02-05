@@ -125,6 +125,7 @@ const Theme = ({
               isUsed={el[2]}
               setter={setTheme}
               setButtonClicked={setButtonClicked}
+              setCurrentDropdown={setActiveDropdown}
               size="tall"
             />
           );

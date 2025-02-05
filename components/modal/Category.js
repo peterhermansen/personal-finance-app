@@ -96,6 +96,7 @@ const Category = ({
               isUsed={el[1]}
               setter={setCategory}
               setButtonClicked={setButtonClicked}
+              setCurrentDropdown={setActiveDropdown}
               size="tall"
             />
           );

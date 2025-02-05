@@ -9,8 +9,8 @@ export default function RootLayout({ children }) {
   const path = usePathname();
 
   const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 1400,
+    height: 1400,
   });
 
   useEffect(() => {
