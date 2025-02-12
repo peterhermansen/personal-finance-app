@@ -79,6 +79,14 @@
   transition: none;
 }
 
+.minimize .btn {
+  height: 4rem;
+}
+
+.minimize .btn .icon {
+  transition: 0.5s all ease-in-out;
+}
+
 .sidebar--open .nav nav .btn,
 .sidebar--open .minimize .btn {
   width: 17.25rem;

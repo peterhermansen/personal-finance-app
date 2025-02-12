@@ -85,7 +85,10 @@ export default function LoginPage({ validCookie }) {
         email: emailValue,
         pass: passValue,
       });
-      if (res === 'Logged in successfully') router.push('/');
+      if (res === 'Logged in successfully') {
+        setForceReload(true);
+        router.push('/');
+      }
       if (res.error === 'Incorrect Password') setWrongLogin(true);
     }
   };
@@ -160,6 +163,9 @@ export default function LoginPage({ validCookie }) {
                 type={displayPass ? 'text' : 'password'}
                 value={passValue}
                 onChange={handlePassChange}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') handleLogin(e);
+                }}
               ></input>
               <button className={styles.button} onClick={handlePassClick}>
                 <img
