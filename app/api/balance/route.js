@@ -1,8 +1,10 @@
 import { getBalance } from '@/lib/db';
+import verifyToken from '@/utils/verifyToken';
 
 export async function GET() {
+  const email = await verifyToken();
   try {
-    const balance = await getBalance();
+    const balance = await getBalance(email);
     return new Response(JSON.stringify(balance), { status: 200 });
   } catch (error) {
     console.error('Error fetching balance', error);

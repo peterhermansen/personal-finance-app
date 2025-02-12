@@ -1,7 +1,7 @@
-import TransactionsPage from '@/components/pages/TransactionsPage';
+import LoginPage from '@/components/pages/LoginPage';
 import validateCookie from '@/utils/validateCookie';
 
 export default async function page() {
   const validCookie = await validateCookie();
-  return <TransactionsPage validCookie={validCookie} />;
+  return <LoginPage validCookie={validCookie} />;
 }

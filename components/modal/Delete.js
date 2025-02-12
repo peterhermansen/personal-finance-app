@@ -16,7 +16,7 @@ const Delete = ({
     setDeleteClicked(false);
     setEditTarget('');
 
-    fetchReq(location, obj, setter);
+    fetchReq('PUT', location, obj, setter);
   };
 
   const handleDelete = () => {

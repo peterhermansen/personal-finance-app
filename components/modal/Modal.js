@@ -25,7 +25,7 @@ const Modal = ({
   const request = (location, obj, setter) => {
     setButtonClicked(false);
     setEditTarget('');
-    fetchReq(location, obj, setter);
+    fetchReq('PUT', location, obj, setter);
   };
 
   const handleFormSubmit = () => {
