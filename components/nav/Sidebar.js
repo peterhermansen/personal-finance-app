@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useStateContext } from '@/app/stateContext.js';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Logout from '../modal/Logout';
 
 const Sidebar = () => {
