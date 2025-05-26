@@ -8,7 +8,9 @@ const Logout = ({ setLogoutClicked }) => {
 
   const handleLogoutClick = () => {
     fetchReq('POST', '/logout');
-    router.push('/login');
+    setTimeout(() => {
+      router.push('/login');
+    }, 10);
   };
 
   return (
