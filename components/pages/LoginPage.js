@@ -69,8 +69,10 @@ export default function LoginPage({ validCookie }) {
       });
       console.log(res);
       if (res === 'User created successfully') {
-        setForceReload(true);
-        router.push('/');
+        setTimeout(() => {
+          setForceReload(true);
+          router.push('/');
+        }, 10);
       }
 
       if (res.error === 'Email exists') setEmailExists(true);
@@ -86,8 +88,10 @@ export default function LoginPage({ validCookie }) {
         pass: passValue,
       });
       if (res === 'Logged in successfully') {
-        setForceReload(true);
-        router.push('/');
+        setTimeout(() => {
+          setForceReload(true);
+          router.push('/');
+        }, 10);
       }
       if (res.error === 'Incorrect Password') setWrongLogin(true);
     }
